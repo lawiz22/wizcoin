@@ -1,6 +1,7 @@
-Wizcoin integration/staging tree
-================================
+FooCoin (FOO)
+===========
 
-wizcoin.org
+[![Build Status](https://travis-ci.org/RazorLove/foocoin.png?branch=master)](https://travis-ci.org/RazorLove/foocoin)
 
-Readme soon
+
+Scrypt Hashcash PoW Template

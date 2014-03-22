@@ -1,12 +1,9 @@
-Building Wizcoin
+Building FooCoin
 
-See doc/readme-qt.rst for instructions on building Wizcoin-Qt,
+See doc/readme-qt.rst for instructions on building foocoin-qt,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of Wizcoin.
+implementation of FooCoin.
 
-See doc/build-*.txt for instructions on building Wizcoind,
+See doc/build-*.txt for instructions on building foocoin,
 the intended-for-services, no-graphical-interface, reference
-implementation of Wizcoin.
-
-Further build information and documentation is available at
-the official Wizcoin website, http://www.bitcoin.org
+implementation of FooCoin.

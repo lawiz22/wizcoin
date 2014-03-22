@@ -1,6 +1,0 @@
-Wizcoin-qt usr/bin
-share/pixmaps/Wizcoin32.xpm usr/share/pixmaps
-share/pixmaps/Wizcoin16.xpm usr/share/pixmaps
-share/pixmaps/Wizcoin128.png usr/share/pixmaps
-debian/Wizcoin-qt.desktop usr/share/applications
-debian/Wizcoin-qt.protocol usr/share/kde4/services/

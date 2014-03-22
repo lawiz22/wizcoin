@@ -1,8 +1,7 @@
 #include "sendcoinsentry.h"
 #include "ui_sendcoinsentry.h"
-
 #include "guiutil.h"
-#include "Wizcoinunits.h"
+#include "bitcoinunits.h"
 #include "addressbookpage.h"
 #include "walletmodel.h"
 #include "optionsmodel.h"
@@ -18,13 +17,13 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
 {
     ui->setupUi(this);
 
-#ifdef Q_OS_MAC
+#ifdef Q_WS_MAC
     ui->payToLayout->setSpacing(4);
 #endif
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
-    ui->payTo->setPlaceholderText(tr("Enter a Wizcoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)"));
+    ui->payTo->setPlaceholderText(tr("Enter a FooCoin address (they start with an 'm')"));
 #endif
     setFocusPolicy(Qt::TabFocus);
     setFocusProxy(ui->payTo);
@@ -73,8 +72,6 @@ void SendCoinsEntry::setModel(WalletModel *model)
     if(model && model->getOptionsModel())
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
 
-    connect(ui->payAmount, SIGNAL(textChanged()), this, SIGNAL(payAmountChanged()));
-
     clear();
 }
 
@@ -89,7 +86,7 @@ void SendCoinsEntry::clear()
     ui->addAsLabel->clear();
     ui->payAmount->clear();
     ui->payTo->setFocus();
-    // update the display unit, to not use the default ("Rt2")
+    // update the display unit, to not use the default ("BTC")
     updateDisplayUnit();
 }
 
@@ -153,12 +150,6 @@ void SendCoinsEntry::setValue(const SendCoinsRecipient &value)
     ui->payTo->setText(value.address);
     ui->addAsLabel->setText(value.label);
     ui->payAmount->setValue(value.amount);
-}
-
-void SendCoinsEntry::setAddress(const QString &address)
-{
-    ui->payTo->setText(address);
-    ui->payAmount->setFocus();
 }
 
 bool SendCoinsEntry::isClear()
