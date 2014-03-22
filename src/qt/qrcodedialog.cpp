@@ -1,7 +1,7 @@
 #include "qrcodedialog.h"
 #include "ui_qrcodedialog.h"
 
-#include "rotocoinunits.h"
+#include "Wizcoinunits.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
@@ -85,7 +85,7 @@ void QRCodeDialog::genCode()
 
 QString QRCodeDialog::getURI()
 {
-    QString ret = QString("rotocoin:%1").arg(address);
+    QString ret = QString("Wizcoin:%1").arg(address);
     int paramCount = 0;
 
     ui->outUri->clear();
@@ -95,7 +95,7 @@ QString QRCodeDialog::getURI()
         if (ui->lnReqAmount->validate())
         {
             // even if we allow a non Rt2 unit input in lnReqAmount, we generate the URI with Rt2 as unit (as defined in BIP21)
-            ret += QString("?amount=%1").arg(RotocoinUnits::format(RotocoinUnits::Rt2, ui->lnReqAmount->value()));
+            ret += QString("?amount=%1").arg(WizcoinUnits::format(WizcoinUnits::Rt2, ui->lnReqAmount->value()));
             paramCount++;
         }
         else

@@ -196,7 +196,7 @@ ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,
         {
             string strAddress;
             ssKey >> strAddress;
-            ssValue >> pwallet->mapAddressBook[CRotocoinAddress(strAddress).Get()];
+            ssValue >> pwallet->mapAddressBook[CWizcoinAddress(strAddress).Get()];
         }
         else if (strType == "tx")
         {
@@ -469,7 +469,7 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
 void ThreadFlushWalletDB(const string& strFile)
 {
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("rotocoin-wallet");
+    RenameThread("Wizcoin-wallet");
 
     static bool fOneThread;
     if (fOneThread)

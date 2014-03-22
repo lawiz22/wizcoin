@@ -1,5 +1,5 @@
 /*
- * Qt4 rotocoin GUI.
+ * Qt4 Wizcoin GUI.
  *
  * W.J. van der Laan 2011-2012
  * The Bitcoin developers 2011-2012
@@ -7,7 +7,7 @@
 
 #include <QApplication>
 
-#include "rotocoingui.h"
+#include "Wizcoingui.h"
 
 #include "transactiontablemodel.h"
 #include "optionsdialog.h"
@@ -17,7 +17,7 @@
 #include "walletframe.h"
 #include "optionsmodel.h"
 #include "transactiondescdialog.h"
-#include "rotocoinunits.h"
+#include "Wizcoinunits.h"
 #include "guiconstants.h"
 #include "notificator.h"
 #include "guiutil.h"
@@ -55,9 +55,9 @@
 
 #include <iostream>
 
-const QString RotocoinGUI::DEFAULT_WALLET = "~Default";
+const QString WizcoinGUI::DEFAULT_WALLET = "~Default";
 
-RotocoinGUI::RotocoinGUI(QWidget *parent) :
+WizcoinGUI::WizcoinGUI(QWidget *parent) :
     QMainWindow(parent),
     clientModel(0),
     encryptWalletAction(0),
@@ -69,10 +69,10 @@ RotocoinGUI::RotocoinGUI(QWidget *parent) :
     prevBlocks(0)
 {
     restoreWindowGeometry();
-    setWindowTitle(tr("Rotocoin") + " - " + tr("Wallet"));
+    setWindowTitle(tr("Wizcoin") + " - " + tr("Wallet"));
 #ifndef Q_OS_MAC
-    QApplication::setWindowIcon(QIcon(":icons/rotocoin"));
-    setWindowIcon(QIcon(":icons/rotocoin"));
+    QApplication::setWindowIcon(QIcon(":icons/Wizcoin"));
+    setWindowIcon(QIcon(":icons/Wizcoin"));
 #else
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
@@ -151,7 +151,7 @@ RotocoinGUI::RotocoinGUI(QWidget *parent) :
     setWalletActionsEnabled(false);
 }
 
-RotocoinGUI::~RotocoinGUI()
+WizcoinGUI::~WizcoinGUI()
 {
     saveWindowGeometry();
     if(trayIcon) // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
@@ -162,7 +162,7 @@ RotocoinGUI::~RotocoinGUI()
 #endif
 }
 
-void RotocoinGUI::createActions()
+void WizcoinGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
@@ -174,7 +174,7 @@ void RotocoinGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a Rotocoin address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a Wizcoin address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
@@ -216,16 +216,16 @@ void RotocoinGUI::createActions()
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(QIcon(":/icons/rotocoin"), tr("&About Rotocoin"), this);
-    aboutAction->setStatusTip(tr("Show information about Rotocoin"));
+    aboutAction = new QAction(QIcon(":/icons/Wizcoin"), tr("&About Wizcoin"), this);
+    aboutAction->setStatusTip(tr("Show information about Wizcoin"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setStatusTip(tr("Modify configuration options for Rotocoin"));
+    optionsAction->setStatusTip(tr("Modify configuration options for Wizcoin"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
-    toggleHideAction = new QAction(QIcon(":/icons/rotocoin"), tr("&Show / Hide"), this);
+    toggleHideAction = new QAction(QIcon(":/icons/Wizcoin"), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
 
     encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
@@ -236,9 +236,9 @@ void RotocoinGUI::createActions()
     changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
     changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your Rotocoin addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your Wizcoin addresses to prove you own them"));
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Rotocoin addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Wizcoin addresses"));
 
     openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging and diagnostic console"));
@@ -255,7 +255,7 @@ void RotocoinGUI::createActions()
     connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
 }
 
-void RotocoinGUI::createMenuBar()
+void WizcoinGUI::createMenuBar()
 {
 #ifdef Q_OS_MAC
     // Create a decoupled menu bar on Mac which stays even if the window is closed
@@ -286,7 +286,7 @@ void RotocoinGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
-void RotocoinGUI::createToolBars()
+void WizcoinGUI::createToolBars()
 {
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -297,7 +297,7 @@ void RotocoinGUI::createToolBars()
     toolbar->addAction(addressBookAction);
 }
 
-void RotocoinGUI::setClientModel(ClientModel *clientModel)
+void WizcoinGUI::setClientModel(ClientModel *clientModel)
 {
     this->clientModel = clientModel;
     if(clientModel)
@@ -307,10 +307,10 @@ void RotocoinGUI::setClientModel(ClientModel *clientModel)
         {
             setWindowTitle(windowTitle() + QString(" ") + tr("[testnet]"));
 #ifndef Q_OS_MAC
-            QApplication::setWindowIcon(QIcon(":icons/rotocoin_testnet"));
-            setWindowIcon(QIcon(":icons/rotocoin_testnet"));
+            QApplication::setWindowIcon(QIcon(":icons/Wizcoin_testnet"));
+            setWindowIcon(QIcon(":icons/Wizcoin_testnet"));
 #else
-            MacDockIconHandler::instance()->setIcon(QIcon(":icons/rotocoin_testnet"));
+            MacDockIconHandler::instance()->setIcon(QIcon(":icons/Wizcoin_testnet"));
 #endif
             if(trayIcon)
             {
@@ -342,24 +342,24 @@ void RotocoinGUI::setClientModel(ClientModel *clientModel)
     }
 }
 
-bool RotocoinGUI::addWallet(const QString& name, WalletModel *walletModel)
+bool WizcoinGUI::addWallet(const QString& name, WalletModel *walletModel)
 {
     setWalletActionsEnabled(true);
     return walletFrame->addWallet(name, walletModel);
 }
 
-bool RotocoinGUI::setCurrentWallet(const QString& name)
+bool WizcoinGUI::setCurrentWallet(const QString& name)
 {
     return walletFrame->setCurrentWallet(name);
 }
 
-void RotocoinGUI::removeAllWallets()
+void WizcoinGUI::removeAllWallets()
 {
     setWalletActionsEnabled(false);
     walletFrame->removeAllWallets();
 }
 
-void RotocoinGUI::setWalletActionsEnabled(bool enabled)
+void WizcoinGUI::setWalletActionsEnabled(bool enabled)
 {
     overviewAction->setEnabled(enabled);
     sendCoinsAction->setEnabled(enabled);
@@ -373,12 +373,12 @@ void RotocoinGUI::setWalletActionsEnabled(bool enabled)
     addressBookAction->setEnabled(enabled);
 }
 
-void RotocoinGUI::createTrayIcon()
+void WizcoinGUI::createTrayIcon()
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
 
-    trayIcon->setToolTip(tr("Rotocoin client"));
+    trayIcon->setToolTip(tr("Wizcoin client"));
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     trayIcon->show();
 #endif
@@ -386,7 +386,7 @@ void RotocoinGUI::createTrayIcon()
     notificator = new Notificator(QApplication::applicationName(), trayIcon);
 }
 
-void RotocoinGUI::createTrayIconMenu()
+void WizcoinGUI::createTrayIconMenu()
 {
     QMenu *trayIconMenu;
 #ifndef Q_OS_MAC
@@ -424,7 +424,7 @@ void RotocoinGUI::createTrayIconMenu()
 }
 
 #ifndef Q_OS_MAC
-void RotocoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void WizcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
@@ -434,14 +434,14 @@ void RotocoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #endif
 
-void RotocoinGUI::saveWindowGeometry()
+void WizcoinGUI::saveWindowGeometry()
 {
     QSettings settings;
     settings.setValue("nWindowPos", pos());
     settings.setValue("nWindowSize", size());
 }
 
-void RotocoinGUI::restoreWindowGeometry()
+void WizcoinGUI::restoreWindowGeometry()
 {
     QSettings settings;
     QPoint pos = settings.value("nWindowPos").toPoint();
@@ -456,7 +456,7 @@ void RotocoinGUI::restoreWindowGeometry()
     move(pos);
 }
 
-void RotocoinGUI::optionsClicked()
+void WizcoinGUI::optionsClicked()
 {
     if(!clientModel || !clientModel->getOptionsModel())
         return;
@@ -465,49 +465,49 @@ void RotocoinGUI::optionsClicked()
     dlg.exec();
 }
 
-void RotocoinGUI::aboutClicked()
+void WizcoinGUI::aboutClicked()
 {
     AboutDialog dlg;
     dlg.setModel(clientModel);
     dlg.exec();
 }
 
-void RotocoinGUI::gotoOverviewPage()
+void WizcoinGUI::gotoOverviewPage()
 {
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
-void RotocoinGUI::gotoHistoryPage()
+void WizcoinGUI::gotoHistoryPage()
 {
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void RotocoinGUI::gotoAddressBookPage()
+void WizcoinGUI::gotoAddressBookPage()
 {
     if (walletFrame) walletFrame->gotoAddressBookPage();
 }
 
-void RotocoinGUI::gotoReceiveCoinsPage()
+void WizcoinGUI::gotoReceiveCoinsPage()
 {
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
 }
 
-void RotocoinGUI::gotoSendCoinsPage(QString addr)
+void WizcoinGUI::gotoSendCoinsPage(QString addr)
 {
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
 }
 
-void RotocoinGUI::gotoSignMessageTab(QString addr)
+void WizcoinGUI::gotoSignMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoSignMessageTab(addr);
 }
 
-void RotocoinGUI::gotoVerifyMessageTab(QString addr)
+void WizcoinGUI::gotoVerifyMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 
-void RotocoinGUI::setNumConnections(int count)
+void WizcoinGUI::setNumConnections(int count)
 {
     QString icon;
     switch(count)
@@ -519,10 +519,10 @@ void RotocoinGUI::setNumConnections(int count)
     default: icon = ":/icons/connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Rotocoin network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Wizcoin network", "", count));
 }
 
-void RotocoinGUI::setNumBlocks(int count, int nTotalBlocks)
+void WizcoinGUI::setNumBlocks(int count, int nTotalBlocks)
 {
     // Prevent orphan statusbar messages (e.g. hover Quit in main menu, wait until chain-sync starts -> garbelled text)
     statusBar()->clearMessage();
@@ -616,9 +616,9 @@ void RotocoinGUI::setNumBlocks(int count, int nTotalBlocks)
     progressBar->setToolTip(tooltip);
 }
 
-void RotocoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
+void WizcoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("Rotocoin"); // default title
+    QString strTitle = tr("Wizcoin"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -667,7 +667,7 @@ void RotocoinGUI::message(const QString &title, const QString &message, unsigned
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
-void RotocoinGUI::changeEvent(QEvent *e)
+void WizcoinGUI::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -686,7 +686,7 @@ void RotocoinGUI::changeEvent(QEvent *e)
 #endif
 }
 
-void RotocoinGUI::closeEvent(QCloseEvent *event)
+void WizcoinGUI::closeEvent(QCloseEvent *event)
 {
     if(clientModel)
     {
@@ -701,18 +701,18 @@ void RotocoinGUI::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
-void RotocoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
+void WizcoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
 {
     QString strMessage = tr("This transaction is over the size limit. You can still send it for a fee of %1, "
         "which goes to the nodes that process your transaction and helps to support the network. "
-        "Do you want to pay the fee?").arg(RotocoinUnits::formatWithUnit(RotocoinUnits::Rt2, nFeeRequired));
+        "Do you want to pay the fee?").arg(WizcoinUnits::formatWithUnit(WizcoinUnits::Rt2, nFeeRequired));
     QMessageBox::StandardButton retval = QMessageBox::question(
           this, tr("Confirm transaction fee"), strMessage,
           QMessageBox::Yes|QMessageBox::Cancel, QMessageBox::Yes);
     *payFee = (retval == QMessageBox::Yes);
 }
 
-void RotocoinGUI::incomingTransaction(const QString& date, int unit, qint64 amount, const QString& type, const QString& address)
+void WizcoinGUI::incomingTransaction(const QString& date, int unit, qint64 amount, const QString& type, const QString& address)
 {
     // On new transaction, make an info balloon
     message((amount)<0 ? tr("Sent transaction") : tr("Incoming transaction"),
@@ -721,19 +721,19 @@ void RotocoinGUI::incomingTransaction(const QString& date, int unit, qint64 amou
                 "Type: %3\n"
                 "Address: %4\n")
                   .arg(date)
-                  .arg(RotocoinUnits::formatWithUnit(unit, amount, true))
+                  .arg(WizcoinUnits::formatWithUnit(unit, amount, true))
                   .arg(type)
                   .arg(address), CClientUIInterface::MSG_INFORMATION);
 }
 
-void RotocoinGUI::dragEnterEvent(QDragEnterEvent *event)
+void WizcoinGUI::dragEnterEvent(QDragEnterEvent *event)
 {
     // Accept only URIs
     if(event->mimeData()->hasUrls())
         event->acceptProposedAction();
 }
 
-void RotocoinGUI::dropEvent(QDropEvent *event)
+void WizcoinGUI::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
     {
@@ -749,14 +749,14 @@ void RotocoinGUI::dropEvent(QDropEvent *event)
         if (nValidUrisFound)
             walletFrame->gotoSendCoinsPage();
         else
-            message(tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Rotocoin address or malformed URI parameters."),
+            message(tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Wizcoin address or malformed URI parameters."),
                       CClientUIInterface::ICON_WARNING);
     }
 
     event->acceptProposedAction();
 }
 
-bool RotocoinGUI::eventFilter(QObject *object, QEvent *event)
+bool WizcoinGUI::eventFilter(QObject *object, QEvent *event)
 {
     // Catch status tip events
     if (event->type() == QEvent::StatusTip)
@@ -768,15 +768,15 @@ bool RotocoinGUI::eventFilter(QObject *object, QEvent *event)
     return QMainWindow::eventFilter(object, event);
 }
 
-void RotocoinGUI::handleURI(QString strURI)
+void WizcoinGUI::handleURI(QString strURI)
 {
     // URI has to be valid
     if (!walletFrame->handleURI(strURI))
-        message(tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Rotocoin address or malformed URI parameters."),
+        message(tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Wizcoin address or malformed URI parameters."),
                   CClientUIInterface::ICON_WARNING);
 }
 
-void RotocoinGUI::setEncryptionStatus(int status)
+void WizcoinGUI::setEncryptionStatus(int status)
 {
     switch(status)
     {
@@ -805,7 +805,7 @@ void RotocoinGUI::setEncryptionStatus(int status)
     }
 }
 
-void RotocoinGUI::showNormalIfMinimized(bool fToggleHidden)
+void WizcoinGUI::showNormalIfMinimized(bool fToggleHidden)
 {
     // activateWindow() (sometimes) helps with keyboard focus on Windows
     if (isHidden())
@@ -827,12 +827,12 @@ void RotocoinGUI::showNormalIfMinimized(bool fToggleHidden)
         hide();
 }
 
-void RotocoinGUI::toggleHidden()
+void WizcoinGUI::toggleHidden()
 {
     showNormalIfMinimized(true);
 }
 
-void RotocoinGUI::detectShutdown()
+void WizcoinGUI::detectShutdown()
 {
     if (ShutdownRequested())
         QMetaObject::invokeMethod(QCoreApplication::instance(), "quit", Qt::QueuedConnection);

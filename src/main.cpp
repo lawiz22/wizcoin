@@ -32,7 +32,7 @@ unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 uint256 hashGenesisBlock("0xaca6423e9849aed1347fe86db37a1079d0447f08b9629fac211206724c1cff9f");
-static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Rotocoin: starting difficulty is 1 / 2^12
+static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Wizcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 uint256 nBestChainWork = 0;
@@ -65,7 +65,7 @@ map<uint256, set<uint256> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Rotocoin Signed Message:\n";
+const string strMessageMagic = "Wizcoin Signed Message:\n";
 
 double dHashesPerSec = 0.0;
 int64 nHPSTimerStart = 0;
@@ -356,7 +356,7 @@ unsigned int LimitOrphanTxSize(unsigned int nMaxOrphans)
 
 bool CTxOut::IsDust() const
 {
-    // Rotocoin: IsDust() detection disabled, allows any valid dust to be relayed.
+    // Wizcoin: IsDust() detection disabled, allows any valid dust to be relayed.
     // The fees imposed on each dust txo is considered sufficient spam deterrant. 
     return false;
 }
@@ -551,7 +551,7 @@ bool CTransaction::CheckTransaction(CValidationState &state) const
     if (vout.empty())
         return state.DoS(10, error("CTransaction::CheckTransaction() : vout empty"));
     // Size limits
-    if (::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION) > MAX_BLOCK_SIZE)
+    if (::GetSerializeSize(*this, SER_NETWORK, PWIZOCOL_VERSION) > MAX_BLOCK_SIZE)
         return state.DoS(100, error("CTransaction::CheckTransaction() : size limits failed"));
 
     // Check for negative or overflow output values
@@ -597,7 +597,7 @@ int64 CTransaction::GetMinFee(unsigned int nBlockSize, bool fAllowFree,
     // Base fee is either nMinTxFee or nMinRelayTxFee
     int64 nBaseFee = (mode == GMF_RELAY) ? nMinRelayTxFee : nMinTxFee;
 
-    unsigned int nBytes = ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION);
+    unsigned int nBytes = ::GetSerializeSize(*this, SER_NETWORK, PWIZOCOL_VERSION);
     unsigned int nNewBlockSize = nBlockSize + nBytes;
     int64 nMinFee = (1 + (int64)nBytes / 1000) * nBaseFee;
 
@@ -613,7 +613,7 @@ int64 CTransaction::GetMinFee(unsigned int nBlockSize, bool fAllowFree,
             nMinFee = 0;
     }
 
-    // Rotocoin
+    // Wizcoin
     // To limit dust spam, add nBaseFee for each output less than DUST_SOFT_LIMIT
     BOOST_FOREACH(const CTxOut& txout, vout)
         if (txout.nValue < DUST_SOFT_LIMIT)
@@ -749,7 +749,7 @@ bool CTxMemPool::accept(CValidationState &state, CTransaction &tx, bool fCheckIn
         // reasonable number of ECDSA signature verifications.
 
         int64 nFees = tx.GetValueIn(view)-tx.GetValueOut();
-        unsigned int nSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
+        unsigned int nSize = ::GetSerializeSize(tx, SER_NETWORK, PWIZOCOL_VERSION);
 
         // Don't accept it if it can't get into a block
         int64 txMinFee = tx.GetMinFee(1000, true, GMF_RELAY);
@@ -1102,13 +1102,13 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     if (nHeight == 1) { nSubsidy = 5760 * COIN; } // 2% Premine for  coin development and promotion
 
     // Subsidy is cut in half at this block height
-    nSubsidy >>= (nHeight / 18000); // rotocoin: 18k blocks, exactly 60 days
+    nSubsidy >>= (nHeight / 18000); // Wizcoin: 18k blocks, exactly 60 days
 
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 86400; // rotocoin: 1 day
-static const int64 nTargetSpacing = 288; // rotocoins every 288 seconds
+static const int64 nTargetTimespan = 86400; // Wizcoin: 1 day
+static const int64 nTargetSpacing = 288; // Wizcoins every 288 seconds
 static const int64 nInterval = nTargetTimespan / nTargetSpacing; // 300 seconds
 
 //
@@ -1170,7 +1170,7 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
         return pindexLast->nBits;
     }
 
-    // Rotocoin: This fixes an issue where a 51% attack can change difficulty at will.
+    // Wizcoin: This fixes an issue where a 51% attack can change difficulty at will.
     // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
     int blockstogoback = nInterval-1;
     if ((pindexLast->nHeight+1) != nInterval)
@@ -1211,7 +1211,7 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
 unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockHeader *pblock) {
     
     // DarkGravity, written by Evan Duffield - evan@darkcoin.io
-    // Current difficulty formula, RotoCoin
+    // Current difficulty formula, Wizcoin
 
     const CBlockIndex *BlockLastSolved = pindexLast;
     const CBlockIndex *BlockReading = pindexLast;
@@ -1223,8 +1223,8 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockH
     int64 nBlockTimeSum2 = 0;
     int64 nBlockTimeCount2 = 0;
     int64 LastBlockTime = 0;
-    int64 PastBlocksMin = 10; // Tuned for rotocoin
-    int64 PastBlocksMax = 120; // Tuned for rotocoin
+    int64 PastBlocksMin = 10; // Tuned for Wizcoin
+    int64 PastBlocksMax = 120; // Tuned for Wizcoin
     int64 CountBlocks = 0;
     CBigNum PastDifficultyAverage;
     CBigNum PastDifficultyAveragePrev;
@@ -1288,7 +1288,7 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockH
 unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
         int DiffMode = 1; // Legacy diff mode
-        if (pindexLast->nHeight+1 >= 13) { DiffMode = 2; } // for rotocoin, DGW takes control after 13 blocks, ~1 hours
+        if (pindexLast->nHeight+1 >= 13) { DiffMode = 2; } // for Wizcoin, DGW takes control after 13 blocks, ~1 hours
 
         if (DiffMode == 1) { return GetNextWorkRequired_V1(pindexLast, pblock); }
         else if (DiffMode == 2) { return DarkGravityWave(pindexLast, pblock); }
@@ -1720,7 +1720,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("rotocoin-scriptch");
+    RenameThread("Wizcoin-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -2205,10 +2205,10 @@ bool CBlock::CheckBlock(CValidationState &state, bool fCheckPOW, bool fCheckMerk
     // that can be verified before saving an orphan block.
 
     // Size limits
-    if (vtx.empty() || vtx.size() > MAX_BLOCK_SIZE || ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION) > MAX_BLOCK_SIZE)
+    if (vtx.empty() || vtx.size() > MAX_BLOCK_SIZE || ::GetSerializeSize(*this, SER_NETWORK, PWIZOCOL_VERSION) > MAX_BLOCK_SIZE)
         return state.DoS(100, error("CheckBlock() : size limits failed"));
 
-    // Rotocoin: Special short-term limits to avoid 10,000 BDB lock limit:
+    // Wizcoin: Special short-term limits to avoid 10,000 BDB lock limit:
     if (GetBlockTime() < 1376568000)  // stop enforcing 15 August 2013 00:00:00
     {
         // Rule is: #unique txids referenced <= 4,500
@@ -2370,7 +2370,7 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
 
 bool CBlockIndex::IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned int nRequired, unsigned int nToCheck)
 {
-    // Rotocoin: temporarily disable v2 block lockin until we are ready for v2 transition
+    // Wizcoin: temporarily disable v2 block lockin until we are ready for v2 transition
     return false;
     unsigned int nFound = 0;
     for (unsigned int i = 0; i < nToCheck && nFound < nRequired && pstart != NULL; i++)
@@ -2882,7 +2882,7 @@ bool InitBlockIndex() {
     if (!fReindex) {
 
         // Genesis block
-        const char* pszTimestamp = "2014 - Rotocoin Launchs March 22, 00:00 GMT";
+        const char* pszTimestamp = "2014 - Wizcoin Launchs March 22, 00:00 GMT";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -3221,7 +3221,7 @@ bool static AlreadyHave(const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xfa, 0xbf, 0xb5, 0xda }; // Rotocoin: increase each by adding 1 to rotocoin's value.
+unsigned char pchMessageStart[4] = { 0xfa, 0xbf, 0xb5, 0xda }; // Wizcoin: increase each by adding 1 to Wizcoin's value.
 
 
 void static ProcessGetData(CNode* pfrom)
@@ -3325,7 +3325,7 @@ void static ProcessGetData(CNode* pfrom)
                     LOCK(mempool.cs);
                     if (mempool.exists(inv.hash)) {
                         CTransaction tx = mempool.lookup(inv.hash);
-                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        CDataStream ss(SER_NETWORK, PWIZOCOL_VERSION);
                         ss.reserve(1000);
                         ss << tx;
                         pfrom->PushMessage("tx", ss);
@@ -3388,7 +3388,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         CAddress addrFrom;
         uint64 nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
-        if (pfrom->nVersion < MIN_PEER_PROTO_VERSION)
+        if (pfrom->nVersion < MIN_PEER_PWIZO_VERSION)
         {
             // disconnect from peers older than this proto version
             printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);
@@ -3435,7 +3435,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
         // Change version
         pfrom->PushMessage("verack");
-        pfrom->ssSend.SetVersion(min(pfrom->nVersion, PROTOCOL_VERSION));
+        pfrom->ssSend.SetVersion(min(pfrom->nVersion, PWIZOCOL_VERSION));
 
         if (!pfrom->fInbound)
         {
@@ -3487,7 +3487,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
     else if (strCommand == "verack")
     {
-        pfrom->SetRecvVersion(min(pfrom->nVersion, PROTOCOL_VERSION));
+        pfrom->SetRecvVersion(min(pfrom->nVersion, PWIZOCOL_VERSION));
     }
 
 
@@ -4263,7 +4263,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// RotocoinMiner
+// WizcoinMiner
 //
 
 int static FormatHashBlocks(void* pbuffer, unsigned int len)
@@ -4456,7 +4456,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
             if (fMissingInputs) continue;
 
             // Priority is sum(valuein * age) / txsize
-            unsigned int nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
+            unsigned int nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PWIZOCOL_VERSION);
             dPriority /= nTxSize;
 
             // This is a more accurate fee-per-kilobyte than is used by the client code, because the
@@ -4493,7 +4493,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
             vecPriority.pop_back();
 
             // Size limits
-            unsigned int nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
+            unsigned int nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PWIZOCOL_VERSION);
             if (nBlockSize + nTxSize >= nBlockMaxSize)
                 continue;
 
@@ -4676,7 +4676,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
         return false;
 
     //// debug print
-    printf("RotocoinMiner:\n");
+    printf("WizcoinMiner:\n");
     printf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", hash.GetHex().c_str(), hashTarget.GetHex().c_str());
     pblock->print();
     printf("generated %s\n", FormatMoney(pblock->vtx[0].vout[0].nValue).c_str());
@@ -4685,7 +4685,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     {
         LOCK(cs_main);
         if (pblock->hashPrevBlock != hashBestChain)
-            return error("RotocoinMiner : generated block is stale");
+            return error("WizcoinMiner : generated block is stale");
 
         // Remove key from key pool
         reservekey.KeepKey();
@@ -4699,17 +4699,17 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
         // Process this block the same as if we had received it from another node
         CValidationState state;
         if (!ProcessBlock(state, NULL, pblock))
-            return error("RotocoinMiner : ProcessBlock, block not accepted");
+            return error("WizcoinMiner : ProcessBlock, block not accepted");
     }
 
     return true;
 }
 
-void static RotocoinMiner(CWallet *pwallet)
+void static WizcoinMiner(CWallet *pwallet)
 {
-    printf("RotocoinMiner started\n");
+    printf("WizcoinMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("rotocoin-miner");
+    RenameThread("Wizcoin-miner");
 
     // Each thread has its own key and counter
     CReserveKey reservekey(pwallet);
@@ -4731,8 +4731,8 @@ void static RotocoinMiner(CWallet *pwallet)
         CBlock *pblock = &pblocktemplate->block;
         IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-        printf("Running RotocoinMiner with %"PRIszu" transactions in block (%u bytes)\n", pblock->vtx.size(),
-               ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
+        printf("Running WizcoinMiner with %"PRIszu" transactions in block (%u bytes)\n", pblock->vtx.size(),
+               ::GetSerializeSize(*pblock, SER_NETWORK, PWIZOCOL_VERSION));
 
         //
         // Pre-build hash buffers
@@ -4842,12 +4842,12 @@ void static RotocoinMiner(CWallet *pwallet)
     } }
     catch (boost::thread_interrupted)
     {
-        printf("RotocoinMiner terminated\n");
+        printf("WizcoinMiner terminated\n");
         throw;
     }
 }
 
-void GenerateRotocoins(bool fGenerate, CWallet* pwallet)
+void GenerateWizcoins(bool fGenerate, CWallet* pwallet)
 {
     static boost::thread_group* minerThreads = NULL;
 
@@ -4867,7 +4867,7 @@ void GenerateRotocoins(bool fGenerate, CWallet* pwallet)
 
     minerThreads = new boost::thread_group();
     for (int i = 0; i < nThreads; i++)
-        minerThreads->create_thread(boost::bind(&RotocoinMiner, pwallet));
+        minerThreads->create_thread(boost::bind(&WizcoinMiner, pwallet));
 }
 
 // Amount compression:

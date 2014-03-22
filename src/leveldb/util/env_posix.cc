@@ -235,7 +235,7 @@ class PosixMmapFile : public WritableFile {
     if (ftruncate(fd_, file_offset_ + map_size_) < 0) {
       return false;
     }
-    void* ptr = mmap(NULL, map_size_, PROT_READ | PROT_WRITE, MAP_SHARED,
+    void* ptr = mmap(NULL, map_size_, PWIZ_READ | PWIZ_WRITE, MAP_SHARED,
                      fd_, file_offset_);
     if (ptr == MAP_FAILED) {
       return false;
@@ -531,7 +531,7 @@ class PosixEnv : public Env {
       uint64_t size;
       s = GetFileSize(fname, &size);
       if (s.ok()) {
-        void* base = mmap(NULL, size, PROT_READ, MAP_SHARED, fd, 0);
+        void* base = mmap(NULL, size, PWIZ_READ, MAP_SHARED, fd, 0);
         if (base != MAP_FAILED) {
           *result = new PosixMmapReadableFile(fname, base, size, &mmap_limit_);
         } else {

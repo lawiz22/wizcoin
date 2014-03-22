@@ -1,7 +1,7 @@
-#include "rotocoinamountfield.h"
+#include "Wizcoinamountfield.h"
 
 #include "qvaluecombobox.h"
-#include "rotocoinunits.h"
+#include "Wizcoinunits.h"
 #include "guiconstants.h"
 
 #include <QHBoxLayout>
@@ -10,7 +10,7 @@
 #include <QApplication>
 #include <qmath.h> // for qPow()
 
-RotocoinAmountField::RotocoinAmountField(QWidget *parent):
+WizcoinAmountField::WizcoinAmountField(QWidget *parent):
         QWidget(parent), amount(0), currentUnit(-1)
 {
     amount = new QDoubleSpinBox(this);
@@ -23,7 +23,7 @@ RotocoinAmountField::RotocoinAmountField(QWidget *parent):
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(amount);
     unit = new QValueComboBox(this);
-    unit->setModel(new RotocoinUnits(this));
+    unit->setModel(new WizcoinUnits(this));
     layout->addWidget(unit);
     layout->addStretch(1);
     layout->setContentsMargins(0,0,0,0);
@@ -41,7 +41,7 @@ RotocoinAmountField::RotocoinAmountField(QWidget *parent):
     unitChanged(unit->currentIndex());
 }
 
-void RotocoinAmountField::setText(const QString &text)
+void WizcoinAmountField::setText(const QString &text)
 {
     if (text.isEmpty())
         amount->clear();
@@ -49,18 +49,18 @@ void RotocoinAmountField::setText(const QString &text)
         amount->setValue(text.toDouble());
 }
 
-void RotocoinAmountField::clear()
+void WizcoinAmountField::clear()
 {
     amount->clear();
     unit->setCurrentIndex(0);
 }
 
-bool RotocoinAmountField::validate()
+bool WizcoinAmountField::validate()
 {
     bool valid = true;
     if (amount->value() == 0.0)
         valid = false;
-    if (valid && !RotocoinUnits::parse(currentUnit, text(), 0))
+    if (valid && !WizcoinUnits::parse(currentUnit, text(), 0))
         valid = false;
 
     setValid(valid);
@@ -68,7 +68,7 @@ bool RotocoinAmountField::validate()
     return valid;
 }
 
-void RotocoinAmountField::setValid(bool valid)
+void WizcoinAmountField::setValid(bool valid)
 {
     if (valid)
         amount->setStyleSheet("");
@@ -76,7 +76,7 @@ void RotocoinAmountField::setValid(bool valid)
         amount->setStyleSheet(STYLE_INVALID);
 }
 
-QString RotocoinAmountField::text() const
+QString WizcoinAmountField::text() const
 {
     if (amount->text().isEmpty())
         return QString();
@@ -84,7 +84,7 @@ QString RotocoinAmountField::text() const
         return amount->text();
 }
 
-bool RotocoinAmountField::eventFilter(QObject *object, QEvent *event)
+bool WizcoinAmountField::eventFilter(QObject *object, QEvent *event)
 {
     if (event->type() == QEvent::FocusIn)
     {
@@ -105,16 +105,16 @@ bool RotocoinAmountField::eventFilter(QObject *object, QEvent *event)
     return QWidget::eventFilter(object, event);
 }
 
-QWidget *RotocoinAmountField::setupTabChain(QWidget *prev)
+QWidget *WizcoinAmountField::setupTabChain(QWidget *prev)
 {
     QWidget::setTabOrder(prev, amount);
     return amount;
 }
 
-qint64 RotocoinAmountField::value(bool *valid_out) const
+qint64 WizcoinAmountField::value(bool *valid_out) const
 {
     qint64 val_out = 0;
-    bool valid = RotocoinUnits::parse(currentUnit, text(), &val_out);
+    bool valid = WizcoinUnits::parse(currentUnit, text(), &val_out);
     if(valid_out)
     {
         *valid_out = valid;
@@ -122,18 +122,18 @@ qint64 RotocoinAmountField::value(bool *valid_out) const
     return val_out;
 }
 
-void RotocoinAmountField::setValue(qint64 value)
+void WizcoinAmountField::setValue(qint64 value)
 {
-    setText(RotocoinUnits::format(currentUnit, value));
+    setText(WizcoinUnits::format(currentUnit, value));
 }
 
-void RotocoinAmountField::unitChanged(int idx)
+void WizcoinAmountField::unitChanged(int idx)
 {
     // Use description tooltip for current unit for the combobox
     unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
 
     // Determine new unit ID
-    int newUnit = unit->itemData(idx, RotocoinUnits::UnitRole).toInt();
+    int newUnit = unit->itemData(idx, WizcoinUnits::UnitRole).toInt();
 
     // Parse current value and convert to new unit
     bool valid = false;
@@ -142,10 +142,10 @@ void RotocoinAmountField::unitChanged(int idx)
     currentUnit = newUnit;
 
     // Set max length after retrieving the value, to prevent truncation
-    amount->setDecimals(RotocoinUnits::decimals(currentUnit));
-    amount->setMaximum(qPow(10, RotocoinUnits::amountDigits(currentUnit)) - qPow(10, -amount->decimals()));
+    amount->setDecimals(WizcoinUnits::decimals(currentUnit));
+    amount->setMaximum(qPow(10, WizcoinUnits::amountDigits(currentUnit)) - qPow(10, -amount->decimals()));
 
-    if(currentUnit == RotocoinUnits::uRt2)
+    if(currentUnit == WizcoinUnits::uRt2)
         amount->setSingleStep(0.01);
     else
         amount->setSingleStep(0.001);
@@ -163,7 +163,7 @@ void RotocoinAmountField::unitChanged(int idx)
     setValid(true);
 }
 
-void RotocoinAmountField::setDisplayUnit(int newUnit)
+void WizcoinAmountField::setDisplayUnit(int newUnit)
 {
     unit->setValue(newUnit);
 }

@@ -2,8 +2,8 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ROTOCOIN_WALLETDB_H
-#define ROTOCOIN_WALLETDB_H
+#ifndef Wizcoin_WALLETDB_H
+#define Wizcoin_WALLETDB_H
 
 #include "db.h"
 #include "base58.h"
@@ -160,4 +160,4 @@ public:
     static bool Recover(CDBEnv& dbenv, std::string filename);
 };
 
-#endif // ROTOCOIN_WALLETDB_H
+#endif // Wizcoin_WALLETDB_H

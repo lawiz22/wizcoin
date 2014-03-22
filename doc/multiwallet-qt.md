@@ -1,22 +1,22 @@
 Multiwallet Qt Development and Integration Strategy
 ===================================================
 
-In order to support loading of multiple wallets in rotocoin-qt, a few changes in the UI architecture will be needed.
+In order to support loading of multiple wallets in Wizcoin-qt, a few changes in the UI architecture will be needed.
 Fortunately, only four of the files in the existing project are affected by this change.
 
 Three new classes have been implemented in three new .h/.cpp file pairs, with much of the functionality that was previously
-implemented in the RotocoinGUI class moved over to these new classes.
+implemented in the WizcoinGUI class moved over to these new classes.
 
-The two existing files most affected, by far, are rotocoingui.h and rotocoingui.cpp, as the RotocoinGUI class will require
+The two existing files most affected, by far, are Wizcoingui.h and Wizcoingui.cpp, as the WizcoinGUI class will require
 some major retrofitting.
 
-Only requiring some minor changes is rotocoin.cpp.
+Only requiring some minor changes is Wizcoin.cpp.
 
-Finally, three new headers and source files will have to be added to rotocoin-qt.pro.
+Finally, three new headers and source files will have to be added to Wizcoin-qt.pro.
 
-Changes to class RotocoinGUI
+Changes to class WizcoinGUI
 ---------------------------
-The principal change to the RotocoinGUI class concerns the QStackedWidget instance called centralWidget.
+The principal change to the WizcoinGUI class concerns the QStackedWidget instance called centralWidget.
 This widget owns five page views: overviewPage, transactionsPage, addressBookPage, receiveCoinsPage, and sendCoinsPage.
 
 A new class called *WalletView* inheriting from QStackedWidget has been written to handle all renderings and updates of
@@ -28,17 +28,17 @@ different loaded wallets. In its current implementation, as a QStackedWidget, on
 but this can be changed later.
 
 A third class called *WalletFrame* inheriting from QFrame has been written as a container for embedding all wallet-related
-controls into RotocoinGUI. At present it just contains a WalletStack instance and does little more than passing on messages
-from RotocoinGUI to the WalletStack, which in turn passes them to the individual WalletViews. It is a WalletFrame instance
-that takes the place of what used to be centralWidget in RotocoinGUI. The purpose of this class is to allow future
-refinements of the wallet controls with minimal need for further modifications to RotocoinGUI, thus greatly simplifying
+controls into WizcoinGUI. At present it just contains a WalletStack instance and does little more than passing on messages
+from WizcoinGUI to the WalletStack, which in turn passes them to the individual WalletViews. It is a WalletFrame instance
+that takes the place of what used to be centralWidget in WizcoinGUI. The purpose of this class is to allow future
+refinements of the wallet controls with minimal need for further modifications to WizcoinGUI, thus greatly simplifying
 merges while reducing the risk of breaking top-level stuff.
 
-Changes to rotocoin.cpp
+Changes to Wizcoin.cpp
 ----------------------
-rotocoin.cpp is the entry point into rotocoin-qt, and as such, will require some minor modifications to provide hooks for
+Wizcoin.cpp is the entry point into Wizcoin-qt, and as such, will require some minor modifications to provide hooks for
 multiple wallet support. Most importantly will be the way it instantiates WalletModels and passes them to the
-singleton RotocoinGUI instance called window. Formerly, RotocoinGUI kept a pointer to a single instance of a WalletModel.
+singleton WizcoinGUI instance called window. Formerly, WizcoinGUI kept a pointer to a single instance of a WalletModel.
 The initial change required is very simple: rather than calling `window.setWalletModel(&walletModel);` we perform the
 following two steps:
 

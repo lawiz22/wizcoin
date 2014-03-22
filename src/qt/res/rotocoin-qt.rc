@@ -1,5 +1,5 @@
-IDI_ICON1 ICON DISCARDABLE "icons/rotocoin.ico"
-IDI_ICON2 ICON DISCARDABLE "icons/rotocoin_testnet.ico"
+IDI_ICON1 ICON DISCARDABLE "icons/Wizcoin.ico"
+IDI_ICON2 ICON DISCARDABLE "icons/Wizcoin_testnet.ico"
 
 #include <windows.h>             // needed for VERSIONINFO
 #include "../../clientversion.h" // holds the needed client version information
@@ -20,14 +20,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Rotocoin"
-            VALUE "FileDescription",    "Rotocoin-Qt (OSS GUI client for Rotocoin)"
+            VALUE "CompanyName",        "Wizcoin"
+            VALUE "FileDescription",    "Wizcoin-Qt (OSS GUI client for Wizcoin)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "rotocoin-qt"
+            VALUE "InternalName",       "Wizcoin-qt"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "rotocoin-qt.exe"
-            VALUE "ProductName",        "Rotocoin-Qt"
+            VALUE "OriginalFilename",   "Wizcoin-qt.exe"
+            VALUE "ProductName",        "Wizcoin-Qt"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

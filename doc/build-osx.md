@@ -1,4 +1,4 @@
-Mac OS X rotocoind build instructions
+Mac OS X Wizcoind build instructions
 ====================================
 
 Authors
@@ -26,7 +26,7 @@ Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.
 Notes
 -----
 
-See `doc/readme-qt.rst` for instructions on building Rotocoin-Qt, the
+See `doc/readme-qt.rst` for instructions on building Wizcoin-Qt, the
 graphical user interface.
 
 Tested on OS X 10.5 through 10.8 on Intel processors only. PPC is not
@@ -72,14 +72,14 @@ Installing the dependencies using MacPorts is very straightforward.
 
     sudo port install boost db48@+no_java openssl miniupnpc
 
-### Building `rotocoind`
+### Building `Wizcoind`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:rotocoin-project/rotocoin.git rotocoin
-        cd rotocoin
+        git clone git@github.com:Wizcoin-project/Wizcoin.git Wizcoin
+        cd Wizcoin
 
-2.  Build rotocoind:
+2.  Build Wizcoind:
 
         cd src
         make -f makefile.osx
@@ -107,12 +107,12 @@ If not, you can ensure that the Brew OpenSSL is correctly linked by running
 
 Rerunning "openssl version" should now return the correct version.
 
-### Building `rotocoind`
+### Building `Wizcoind`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone git@github.com:rotocoin-project/rotocoin.git rotocoin
-        cd rotocoin
+        git clone git@github.com:Wizcoin-project/Wizcoin.git Wizcoin
+        cd Wizcoin
 
 2.  Modify source in order to pick up the `openssl` library.
 
@@ -122,7 +122,7 @@ Rerunning "openssl version" should now return the correct version.
 
         patch -p1 < contrib/homebrew/makefile.osx.patch
 
-3.  Build rotocoind:
+3.  Build Wizcoind:
 
         cd src
         make -f makefile.osx
@@ -134,8 +134,8 @@ Rerunning "openssl version" should now return the correct version.
 Creating a release build
 ------------------------
 
-A rotocoind binary is not included in the Rotocoin-Qt.app bundle. You can ignore
-this section if you are building `rotocoind` for your own use.
+A Wizcoind binary is not included in the Wizcoin-Qt.app bundle. You can ignore
+this section if you are building `Wizcoind` for your own use.
 
 If you are building `litecond` for others, your build machine should be set up
 as follows for maximum compatibility:
@@ -156,30 +156,30 @@ As of December 2012, the `boost` port does not obey `macosx_deployment_target`.
 Download `http://gavinandresen-bitcoin.s3.amazonaws.com/boost_macports_fix.zip`
 for a fix. Some ports also seem to obey either `build_arch` or
 `macosx_deployment_target`, but not both at the same time. For example, building
-on an OS X 10.6 64-bit machine fails. Official release builds of Rotocoin-Qt are
+on an OS X 10.6 64-bit machine fails. Official release builds of Wizcoin-Qt are
 compiled on an OS X 10.6 32-bit machine to workaround that problem.
 
-Once dependencies are compiled, creating `Rotocoin-Qt.app` is easy:
+Once dependencies are compiled, creating `Wizcoin-Qt.app` is easy:
 
     make -f Makefile.osx RELEASE=1
 
 Running
 -------
 
-It's now available at `./rotocoind`, provided that you are still in the `src`
+It's now available at `./Wizcoind`, provided that you are still in the `src`
 directory. We have to first create the RPC configuration file, though.
 
-Run `./rotocoind` to get the filename where it should be put, or just try these
+Run `./Wizcoind` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=rotocoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Rotocoin/rotocoin.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/Rotocoin/rotocoin.conf"
+    echo -e "rpcuser=Wizcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Wizcoin/Wizcoin.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/Wizcoin/Wizcoin.conf"
 
 When next you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours.
 
 Other commands:
 
-    ./rotocoind --help  # for a list of command-line options.
-    ./rotocoind -daemon # to start the rotocoin daemon.
-    ./rotocoind help    # When the daemon is running, to get a list of RPC commands
+    ./Wizcoind --help  # for a list of command-line options.
+    ./Wizcoind -daemon # to start the Wizcoin daemon.
+    ./Wizcoind help    # When the daemon is running, to get a list of RPC commands

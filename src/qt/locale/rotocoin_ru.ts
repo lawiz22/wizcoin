@@ -321,9 +321,9 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
 </context>
 <context>
-    <name>RotocoinGUI</name>
+    <name>WizcoinGUI</name>
     <message>
-        <location filename="../rotocoingui.cpp" line="+233"/>
+        <location filename="../Wizcoingui.cpp" line="+233"/>
         <source>Sign &amp;message...</source>
         <translation>&amp;Подписать сообщение...</translation>
     </message>
@@ -670,7 +670,7 @@ Address: %4
         <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;заблокирован&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../rotocoin.cpp" line="+111"/>
+        <location filename="../Wizcoin.cpp" line="+111"/>
         <source>A fatal error occurred. Litecoin can no longer continue safely and will quit.</source>
         <translation>Произошла неисправимая ошибка. Litecoin не может безопасно продолжать работу и будет закрыт.</translation>
     </message>
@@ -2184,9 +2184,9 @@ Address: %4
     </message>
 </context>
 <context>
-    <name>rotocoin-core</name>
+    <name>Wizcoin-core</name>
     <message>
-        <location filename="../rotocoinstrings.cpp" line="+94"/>
+        <location filename="../Wizcoinstrings.cpp" line="+94"/>
         <source>Litecoin version</source>
         <translation>Версия</translation>
     </message>

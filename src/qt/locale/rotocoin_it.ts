@@ -321,9 +321,9 @@ Questo prodotto include software sviluppato dal progetto OpenSSL per l&apos;uso 
     </message>
 </context>
 <context>
-    <name>RotocoinGUI</name>
+    <name>WizcoinGUI</name>
     <message>
-        <location filename="../rotocoingui.cpp" line="+233"/>
+        <location filename="../Wizcoingui.cpp" line="+233"/>
         <source>Sign &amp;message...</source>
         <translation>Firma il &amp;messaggio...</translation>
     </message>
@@ -671,7 +671,7 @@ Indirizzo: %4
         <translation>Il portamonete è &lt;b&gt;cifrato&lt;/b&gt; e attualmente &lt;b&gt;bloccato&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../rotocoin.cpp" line="+111"/>
+        <location filename="../Wizcoin.cpp" line="+111"/>
         <source>A fatal error occurred. Litecoin can no longer continue safely and will quit.</source>
         <translation>Riscontrato un errore irreversibile. Litecoin non può più continuare in sicurezza e verrà terminato.</translation>
     </message>
@@ -2186,9 +2186,9 @@ Indirizzo: %4
     </message>
 </context>
 <context>
-    <name>rotocoin-core</name>
+    <name>Wizcoin-core</name>
     <message>
-        <location filename="../rotocoinstrings.cpp" line="+94"/>
+        <location filename="../Wizcoinstrings.cpp" line="+94"/>
         <source>Litecoin version</source>
         <translation>Versione di Litecoin</translation>
     </message>

@@ -1,5 +1,5 @@
 ---
-name: "rotocoin-deps"
+name: "Wizcoin-deps"
 suites:
 - "precise"
 architectures:
@@ -90,4 +90,4 @@ script: |
   cd ..
   #
   cd $INSTALLPREFIX
-  zip -r $OUTDIR/rotocoin-deps-win32-gitian-r9.zip include lib
+  zip -r $OUTDIR/Wizcoin-deps-win32-gitian-r9.zip include lib

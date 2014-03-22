@@ -1,4 +1,4 @@
-diff --git a/contrib/test-patches/rotocoind-comparison.patch b/contrib/test-patches/rotocoind-comparison.patch
+diff --git a/contrib/test-patches/Wizcoind-comparison.patch b/contrib/test-patches/Wizcoind-comparison.patch
 index 04a8618..519429a 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp

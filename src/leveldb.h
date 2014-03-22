@@ -1,8 +1,8 @@
 // Copyright (c) 2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ROTOCOIN_LEVELDB_H
-#define ROTOCOIN_LEVELDB_H
+#ifndef Wizcoin_LEVELDB_H
+#define Wizcoin_LEVELDB_H
 
 #include "serialize.h"
 
@@ -150,4 +150,4 @@ public:
     }
 };
 
-#endif // ROTOCOIN_LEVELDB_H
+#endif // Wizcoin_LEVELDB_H

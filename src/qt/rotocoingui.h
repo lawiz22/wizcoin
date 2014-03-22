@@ -1,5 +1,5 @@
-#ifndef ROTOCOINGUI_H
-#define ROTOCOINGUI_H
+#ifndef WizcoinGUI_H
+#define WizcoinGUI_H
 
 #include <QMainWindow>
 #include <QSystemTrayIcon>
@@ -33,25 +33,25 @@ class QAction;
 QT_END_NAMESPACE
 
 /**
-  Rotocoin GUI main class. This class represents the main window of the Rotocoin UI. It communicates with both the client and
+  Wizcoin GUI main class. This class represents the main window of the Wizcoin UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
 */
-class RotocoinGUI : public QMainWindow
+class WizcoinGUI : public QMainWindow
 {
     Q_OBJECT
 
 public:
     static const QString DEFAULT_WALLET;
 
-    explicit RotocoinGUI(QWidget *parent = 0);
-    ~RotocoinGUI();
+    explicit WizcoinGUI(QWidget *parent = 0);
+    ~WizcoinGUI();
 
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
     /** Set the wallet model.
-        The wallet model represents a rotocoin wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a Wizcoin wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
 
@@ -197,4 +197,4 @@ private slots:
     void detectShutdown();
 };
 
-#endif // ROTOCOINGUI_H
+#endif // WizcoinGUI_H

@@ -3,7 +3,7 @@
 
 #include "clientmodel.h"
 #include "walletmodel.h"
-#include "rotocoinunits.h"
+#include "Wizcoinunits.h"
 #include "optionsmodel.h"
 #include "transactiontablemodel.h"
 #include "transactionfilterproxy.h"
@@ -20,7 +20,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(RotocoinUnits::Rt2)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(WizcoinUnits::Rt2)
     {
 
     }
@@ -68,7 +68,7 @@ public:
             foreground = option.palette.color(QPalette::Text);
         }
         painter->setPen(foreground);
-        QString amountText = RotocoinUnits::formatWithUnit(unit, amount, true);
+        QString amountText = WizcoinUnits::formatWithUnit(unit, amount, true);
         if(!confirmed)
         {
             amountText = QString("[") + amountText + QString("]");
@@ -137,9 +137,9 @@ void OverviewPage::setBalance(qint64 balance, qint64 unconfirmedBalance, qint64 
     currentBalance = balance;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
-    ui->labelBalance->setText(RotocoinUnits::formatWithUnit(unit, balance));
-    ui->labelUnconfirmed->setText(RotocoinUnits::formatWithUnit(unit, unconfirmedBalance));
-    ui->labelImmature->setText(RotocoinUnits::formatWithUnit(unit, immatureBalance));
+    ui->labelBalance->setText(WizcoinUnits::formatWithUnit(unit, balance));
+    ui->labelUnconfirmed->setText(WizcoinUnits::formatWithUnit(unit, unconfirmedBalance));
+    ui->labelImmature->setText(WizcoinUnits::formatWithUnit(unit, immatureBalance));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users

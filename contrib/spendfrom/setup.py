@@ -1,7 +1,7 @@
 from distutils.core import setup
 setup(name='btcspendfrom',
       version='1.0',
-      description='Command-line utility for rotocoin "coin control"',
+      description='Command-line utility for Wizcoin "coin control"',
       author='Gavin Andresen',
       author_email='gavin@bitcoinfoundation.org',
       requires=['jsonrpc'],

@@ -1,12 +1,12 @@
-Building Rotocoin
+Building Wizcoin
 
-See doc/readme-qt.rst for instructions on building Rotocoin-Qt,
+See doc/readme-qt.rst for instructions on building Wizcoin-Qt,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of Rotocoin.
+implementation of Wizcoin.
 
-See doc/build-*.txt for instructions on building rotocoind,
+See doc/build-*.txt for instructions on building Wizcoind,
 the intended-for-services, no-graphical-interface, reference
-implementation of Rotocoin.
+implementation of Wizcoin.
 
 Further build information and documentation is available at
-the official Rotocoin website, http://www.bitcoin.org
+the official Wizcoin website, http://www.bitcoin.org

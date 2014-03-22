@@ -1,11 +1,11 @@
 /*
- * Qt4 rotocoin GUI.
+ * Qt4 Wizcoin GUI.
  *
  * W.J. van der Laan 2011-2012
  * The Bitcoin developers 2011-2013
  */
 #include "walletview.h"
-#include "rotocoingui.h"
+#include "Wizcoingui.h"
 #include "transactiontablemodel.h"
 #include "addressbookpage.h"
 #include "sendcoinsdialog.h"
@@ -29,7 +29,7 @@
 #include <QFileDialog>
 #include <QPushButton>
 
-WalletView::WalletView(QWidget *parent, RotocoinGUI *_gui):
+WalletView::WalletView(QWidget *parent, WizcoinGUI *_gui):
     QStackedWidget(parent),
     gui(_gui),
     clientModel(0),
@@ -90,7 +90,7 @@ WalletView::~WalletView()
 {
 }
 
-void WalletView::setRotocoinGUI(RotocoinGUI *gui)
+void WalletView::setWizcoinGUI(WizcoinGUI *gui)
 {
     this->gui = gui;
 }

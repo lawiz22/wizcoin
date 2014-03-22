@@ -1,9 +1,9 @@
 Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=174
-Upstream-Name: Rotocoin
+Upstream-Name: Wizcoin
 Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
- irc://#rotocoin@freenode.net
-Source: http://sourceforge.net/projects/rotocoin/files/
- https://github.com/rotocoin/rotocoin
+ irc://#Wizcoin@freenode.net
+Source: http://sourceforge.net/projects/Wizcoin/files/
+ https://github.com/Wizcoin/Wizcoin
 
 Files: *
 Copyright: 2009-2012, Bitcoin developers
@@ -56,7 +56,7 @@ Comment: Icon Pack: Human-O2
 Files: src/qt/res/icons/transaction*.png
 Copyright: md2k7
 License: Expat
-Comment: Site: https://rotocointalk.org/index.php?topic=15276.0
+Comment: Site: https://Wizcointalk.org/index.php?topic=15276.0
 
 Files: src/qt/res/icons/configure.png, src/qt/res/icons/quit.png,
       src/qt/res/icons/editcopy.png, src/qt/res/icons/editpaste.png,
@@ -66,10 +66,10 @@ Copyright: http://www.everaldo.com
 License: LGPL
 Comment: Icon Pack: Crystal SVG
 
-Files: src/qt/res/icons/rotocoin.png, src/qt/res/icons/toolbar.png
+Files: src/qt/res/icons/Wizcoin.png, src/qt/res/icons/toolbar.png
 Copyright: Bitboy (optimized for 16x16 by Wladimir van der Laan)
 License: PUB-DOM
-Comment: Site: https://rotocointalk.org/?topic=1756.0
+Comment: Site: https://Wizcointalk.org/?topic=1756.0
 
 Files:  scripts/img/reload.xcf, src/qt/res/movies/update_spinner.mng
 Copyright: Everaldo (Everaldo Coelho)
@@ -80,7 +80,7 @@ Comment: Icon Pack: Kids
 Files: src/qt/res/images/splash2.jpg
 License: PUB-DOM
 Copyright: Crobbo (forum)
-Comment: Site: https://rotocointalk.org/index.php?topic=32273.0
+Comment: Site: https://Wizcointalk.org/index.php?topic=32273.0
 
 
 License: Expat

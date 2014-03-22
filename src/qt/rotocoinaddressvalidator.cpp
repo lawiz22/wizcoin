@@ -1,4 +1,4 @@
-#include "rotocoinaddressvalidator.h"
+#include "Wizcoinaddressvalidator.h"
 
 /* Base58 characters are:
      "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
@@ -13,12 +13,12 @@
   - '0' and 'O' to 'o'
 */
 
-RotocoinAddressValidator::RotocoinAddressValidator(QObject *parent) :
+WizcoinAddressValidator::WizcoinAddressValidator(QObject *parent) :
     QValidator(parent)
 {
 }
 
-QValidator::State RotocoinAddressValidator::validate(QString &input, int &pos) const
+QValidator::State WizcoinAddressValidator::validate(QString &input, int &pos) const
 {
     // Correction
     for(int idx=0; idx<input.size();)

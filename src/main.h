@@ -2,8 +2,8 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ROTOCOIN_MAIN_H
-#define ROTOCOIN_MAIN_H
+#ifndef Wizcoin_MAIN_H
+#define Wizcoin_MAIN_H
 
 #include "bignum.h"
 #include "sync.h"
@@ -53,7 +53,7 @@ static const unsigned int MEMPOOL_HEIGHT = 0x7FFFFFFF;
 static const int64 DUST_SOFT_LIMIT = 100000; // 0.001 Rt2
 /** Dust Hard Limit, ignored as wallet inputs (mininput default) */
 static const int64 DUST_HARD_LIMIT = 1000;   // 0.00001 Rt2 mininput
-/** No amount larger than this (in rotocoins) is valid */
+/** No amount larger than this (in Wizcoins) is valid */
 static const int64 MAX_MONEY = 288000 * COIN;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
@@ -159,7 +159,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle);
 /** Run an instance of the script checking thread */
 void ThreadScriptCheck();
 /** Run the miner threads */
-void GenerateRotocoins(bool fGenerate, CWallet* pwallet);
+void GenerateWizcoins(bool fGenerate, CWallet* pwallet);
 /** Generate a new block, without valid proof-of-work */
 CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn);
 CBlockTemplate* CreateNewBlockWithKey(CReserveKey& reservekey);
@@ -595,7 +595,7 @@ public:
      */
     unsigned int GetP2SHSigOpCount(CCoinsViewCache& mapInputs) const;
 
-    /** Amount of rotocoins spent by this transaction.
+    /** Amount of Wizcoins spent by this transaction.
         @return sum of all outputs (note: does not include fees)
      */
     int64 GetValueOut() const
@@ -610,7 +610,7 @@ public:
         return nValueOut;
     }
 
-    /** Amount of rotocoins coming in to this transaction
+    /** Amount of Wizcoins coming in to this transaction
         Note that lightweight clients may not know anything besides the hash of previous transactions,
         so may not be able to calculate this.
 
@@ -800,7 +800,7 @@ public:
         fileout << *this;
 
         // calculate & write checksum
-        CHashWriter hasher(SER_GETHASH, PROTOCOL_VERSION);
+        CHashWriter hasher(SER_GETHASH, PWIZOCOL_VERSION);
         hasher << hashBlock;
         hasher << *this;
         fileout << hasher.GetHash();
@@ -831,7 +831,7 @@ public:
         }
 
         // Verify checksum
-        CHashWriter hasher(SER_GETHASH, PROTOCOL_VERSION);
+        CHashWriter hasher(SER_GETHASH, PWIZOCOL_VERSION);
         hasher << hashBlock;
         hasher << *this;
         if (hashChecksum != hasher.GetHash())

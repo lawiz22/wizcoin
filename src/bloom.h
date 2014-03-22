@@ -1,8 +1,8 @@
 // Copyright (c) 2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ROTOCOIN_BLOOM_H
-#define ROTOCOIN_BLOOM_H
+#ifndef Wizcoin_BLOOM_H
+#define Wizcoin_BLOOM_H
 
 #include <vector>
 
@@ -88,4 +88,4 @@ public:
     void UpdateEmptyFull();
 };
 
-#endif /* ROTOCOIN_BLOOM_H */
+#endif /* Wizcoin_BLOOM_H */

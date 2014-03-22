@@ -1,23 +1,23 @@
-#include "rotocoinunits.h"
+#include "Wizcoinunits.h"
 
 #include <QStringList>
 
-RotocoinUnits::RotocoinUnits(QObject *parent):
+WizcoinUnits::WizcoinUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
 {
 }
 
-QList<RotocoinUnits::Unit> RotocoinUnits::availableUnits()
+QList<WizcoinUnits::Unit> WizcoinUnits::availableUnits()
 {
-    QList<RotocoinUnits::Unit> unitlist;
+    QList<WizcoinUnits::Unit> unitlist;
     unitlist.append(Rt2);
     unitlist.append(mRt2);
     unitlist.append(uRt2);
     return unitlist;
 }
 
-bool RotocoinUnits::valid(int unit)
+bool WizcoinUnits::valid(int unit)
 {
     switch(unit)
     {
@@ -30,7 +30,7 @@ bool RotocoinUnits::valid(int unit)
     }
 }
 
-QString RotocoinUnits::name(int unit)
+QString WizcoinUnits::name(int unit)
 {
     switch(unit)
     {
@@ -41,18 +41,18 @@ QString RotocoinUnits::name(int unit)
     }
 }
 
-QString RotocoinUnits::description(int unit)
+QString WizcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case Rt2: return QString("Rotocoins");
-    case mRt2: return QString("Milli-Rotocoins (1 / 1,000)");
-    case uRt2: return QString("Micro-Rotocoins (1 / 1,000,000)");
+    case Rt2: return QString("Wizcoins");
+    case mRt2: return QString("Milli-Wizcoins (1 / 1,000)");
+    case uRt2: return QString("Micro-Wizcoins (1 / 1,000,000)");
     default: return QString("???");
     }
 }
 
-qint64 RotocoinUnits::factor(int unit)
+qint64 WizcoinUnits::factor(int unit)
 {
     switch(unit)
     {
@@ -63,7 +63,7 @@ qint64 RotocoinUnits::factor(int unit)
     }
 }
 
-int RotocoinUnits::amountDigits(int unit)
+int WizcoinUnits::amountDigits(int unit)
 {
     switch(unit)
     {
@@ -74,7 +74,7 @@ int RotocoinUnits::amountDigits(int unit)
     }
 }
 
-int RotocoinUnits::decimals(int unit)
+int WizcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
@@ -85,7 +85,7 @@ int RotocoinUnits::decimals(int unit)
     }
 }
 
-QString RotocoinUnits::format(int unit, qint64 n, bool fPlus)
+QString WizcoinUnits::format(int unit, qint64 n, bool fPlus)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -112,12 +112,12 @@ QString RotocoinUnits::format(int unit, qint64 n, bool fPlus)
     return quotient_str + QString(".") + remainder_str;
 }
 
-QString RotocoinUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
+QString WizcoinUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
 {
     return format(unit, amount, plussign) + QString(" ") + name(unit);
 }
 
-bool RotocoinUnits::parse(int unit, const QString &value, qint64 *val_out)
+bool WizcoinUnits::parse(int unit, const QString &value, qint64 *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -154,13 +154,13 @@ bool RotocoinUnits::parse(int unit, const QString &value, qint64 *val_out)
     return ok;
 }
 
-int RotocoinUnits::rowCount(const QModelIndex &parent) const
+int WizcoinUnits::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return unitlist.size();
 }
 
-QVariant RotocoinUnits::data(const QModelIndex &index, int role) const
+QVariant WizcoinUnits::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if(row >= 0 && row < unitlist.size())

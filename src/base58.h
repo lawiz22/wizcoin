@@ -12,8 +12,8 @@
 // - E-mail usually won't line-break if there's no punctuation to break at.
 // - Double-clicking selects the whole number as one word if it's all alphanumeric.
 //
-#ifndef ROTOCOIN_BASE58_H
-#define ROTOCOIN_BASE58_H
+#ifndef Wizcoin_BASE58_H
+#define Wizcoin_BASE58_H
 
 #include <string>
 #include <vector>
@@ -249,33 +249,33 @@ public:
     bool operator> (const CBase58Data& b58) const { return CompareTo(b58) >  0; }
 };
 
-/** base58-encoded Rotocoin addresses.
+/** base58-encoded Wizcoin addresses.
  * Public-key-hash-addresses have version 61 (or 66 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
  * Script-hash-addresses have version 123 (or 128 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
  */
-class CRotocoinAddress;
-class CRotocoinAddressVisitor : public boost::static_visitor<bool>
+class CWizcoinAddress;
+class CWizcoinAddressVisitor : public boost::static_visitor<bool>
 {
 private:
-    CRotocoinAddress *addr;
+    CWizcoinAddress *addr;
 public:
-    CRotocoinAddressVisitor(CRotocoinAddress *addrIn) : addr(addrIn) { }
+    CWizcoinAddressVisitor(CWizcoinAddress *addrIn) : addr(addrIn) { }
     bool operator()(const CKeyID &id) const;
     bool operator()(const CScriptID &id) const;
     bool operator()(const CNoDestination &no) const;
 };
 
-class CRotocoinAddress : public CBase58Data
+class CWizcoinAddress : public CBase58Data
 {
 public:
     enum
     {
-        PUBKEY_ADDRESS = 61, // Rotocoin addresses start with R
-        SCRIPT_ADDRESS = 123, // Rotocoin multisig addresses start with r
-        PUBKEY_ADDRESS_TEST = 66, // Rotocoin testnet addresses start with T
-        SCRIPT_ADDRESS_TEST = 128, // Rotocoin testnet multisig addresses start with t
+        PUBKEY_ADDRESS = 61, // Wizcoin addresses start with R
+        SCRIPT_ADDRESS = 123, // Wizcoin multisig addresses start with r
+        PUBKEY_ADDRESS_TEST = 66, // Wizcoin testnet addresses start with T
+        SCRIPT_ADDRESS_TEST = 128, // Wizcoin testnet multisig addresses start with t
     };
 
     bool Set(const CKeyID &id) {
@@ -290,7 +290,7 @@ public:
 
     bool Set(const CTxDestination &dest)
     {
-        return boost::apply_visitor(CRotocoinAddressVisitor(this), dest);
+        return boost::apply_visitor(CWizcoinAddressVisitor(this), dest);
     }
 
     bool IsValid() const
@@ -323,21 +323,21 @@ public:
         return fExpectTestNet == fTestNet && vchData.size() == nExpectedSize;
     }
 
-    CRotocoinAddress()
+    CWizcoinAddress()
     {
     }
 
-    CRotocoinAddress(const CTxDestination &dest)
+    CWizcoinAddress(const CTxDestination &dest)
     {
         Set(dest);
     }
 
-    CRotocoinAddress(const std::string& strAddress)
+    CWizcoinAddress(const std::string& strAddress)
     {
         SetString(strAddress);
     }
 
-    CRotocoinAddress(const char* pszAddress)
+    CWizcoinAddress(const char* pszAddress)
     {
         SetString(pszAddress);
     }
@@ -390,18 +390,18 @@ public:
     }
 };
 
-bool inline CRotocoinAddressVisitor::operator()(const CKeyID &id) const         { return addr->Set(id); }
-bool inline CRotocoinAddressVisitor::operator()(const CScriptID &id) const      { return addr->Set(id); }
-bool inline CRotocoinAddressVisitor::operator()(const CNoDestination &id) const { return false; }
+bool inline CWizcoinAddressVisitor::operator()(const CKeyID &id) const         { return addr->Set(id); }
+bool inline CWizcoinAddressVisitor::operator()(const CScriptID &id) const      { return addr->Set(id); }
+bool inline CWizcoinAddressVisitor::operator()(const CNoDestination &id) const { return false; }
 
 /** A base58-encoded secret key */
-class CRotocoinSecret : public CBase58Data
+class CWizcoinSecret : public CBase58Data
 {
 public:
     enum
     {
-        PRIVKEY_ADDRESS = CRotocoinAddress::PUBKEY_ADDRESS + 128,
-        PRIVKEY_ADDRESS_TEST = CRotocoinAddress::PUBKEY_ADDRESS_TEST + 128,
+        PRIVKEY_ADDRESS = CWizcoinAddress::PUBKEY_ADDRESS + 128,
+        PRIVKEY_ADDRESS_TEST = CWizcoinAddress::PUBKEY_ADDRESS_TEST + 128,
     };
 
     void SetKey(const CKey& vchSecret)
@@ -447,14 +447,14 @@ public:
         return SetString(strSecret.c_str());
     }
 
-    CRotocoinSecret(const CKey& vchSecret)
+    CWizcoinSecret(const CKey& vchSecret)
     {
         SetKey(vchSecret);
     }
 
-    CRotocoinSecret()
+    CWizcoinSecret()
     {
     }
 };
 
-#endif // ROTOCOIN_BASE58_H
+#endif // Wizcoin_BASE58_H

@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # Jonas Schnelli, 2013
-# make sure the Rotocoin-Qt.app contains the right plist (including the right version)
+# make sure the Wizcoin-Qt.app contains the right plist (including the right version)
 # fix made because of serval bugs in Qt mac deployment (https://bugreports.qt-project.org/browse/QTBUG-21267)
 
 from string import Template
 from datetime import date
 
-rotocoinDir = "./";
+WizcoinDir = "./";
 
-inFile     = rotocoinDir+"/share/qt/Info.plist"
-outFile    = "Rotocoin-Qt.app/Contents/Info.plist"
+inFile     = WizcoinDir+"/share/qt/Info.plist"
+outFile    = "Wizcoin-Qt.app/Contents/Info.plist"
 version    = "unknown";
 
-fileForGrabbingVersion = rotocoinDir+"rotocoin-qt.pro"
+fileForGrabbingVersion = WizcoinDir+"Wizcoin-qt.pro"
 for line in open(fileForGrabbingVersion):
 	lineArr = line.replace(" ", "").split("=");
 	if lineArr[0].startswith("VERSION"):

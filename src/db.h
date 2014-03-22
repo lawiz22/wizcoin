@@ -2,8 +2,8 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ROTOCOIN_DB_H
-#define ROTOCOIN_DB_H
+#ifndef Wizcoin_DB_H
+#define Wizcoin_DB_H
 
 #include "main.h"
 
@@ -324,4 +324,4 @@ public:
     bool Read(CAddrMan& addr);
 };
 
-#endif // ROTOCOIN_DB_H
+#endif // Wizcoin_DB_H

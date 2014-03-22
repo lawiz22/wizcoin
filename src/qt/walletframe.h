@@ -1,5 +1,5 @@
 /*
- * Qt4 rotocoin GUI.
+ * Qt4 Wizcoin GUI.
  *
  * W.J. van der Laan 2011-2012
  * The Bitcoin developers 2011-2013
@@ -9,7 +9,7 @@
 
 #include <QFrame>
 
-class RotocoinGUI;
+class WizcoinGUI;
 class ClientModel;
 class WalletModel;
 class WalletStack;
@@ -20,7 +20,7 @@ class WalletFrame : public QFrame
     Q_OBJECT
 
 public:
-    explicit WalletFrame(RotocoinGUI *_gui = 0);
+    explicit WalletFrame(WizcoinGUI *_gui = 0);
     ~WalletFrame();
 
     void setClientModel(ClientModel *clientModel);
@@ -35,7 +35,7 @@ public:
     void showOutOfSyncWarning(bool fShow);
 
 private:
-    RotocoinGUI *gui;
+    WizcoinGUI *gui;
     ClientModel *clientModel;
     WalletStack *walletStack;
 

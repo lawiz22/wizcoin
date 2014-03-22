@@ -131,7 +131,7 @@ const char* GetOpName(opcodetype opcode)
     case OP_2DUP                   : return "OP_2DUP";
     case OP_3DUP                   : return "OP_3DUP";
     case OP_2OVER                  : return "OP_2OVER";
-    case OP_2ROT                   : return "OP_2ROT";
+    case OP_2WIZ                   : return "OP_2WIZ";
     case OP_2SWAP                  : return "OP_2SWAP";
     case OP_IFDUP                  : return "OP_IFDUP";
     case OP_DEPTH                  : return "OP_DEPTH";
@@ -141,7 +141,7 @@ const char* GetOpName(opcodetype opcode)
     case OP_OVER                   : return "OP_OVER";
     case OP_PICK                   : return "OP_PICK";
     case OP_ROLL                   : return "OP_ROLL";
-    case OP_ROT                    : return "OP_ROT";
+    case OP_WIZ                    : return "OP_WIZ";
     case OP_SWAP                   : return "OP_SWAP";
     case OP_TUCK                   : return "OP_TUCK";
 
@@ -243,7 +243,7 @@ bool IsCanonicalPubKey(const valtype &vchPubKey) {
 }
 
 bool IsCanonicalSignature(const valtype &vchSig) {
-    // See https://rotocointalk.org/index.php?topic=8392.msg127623#msg127623
+    // See https://Wizcointalk.org/index.php?topic=8392.msg127623#msg127623
     // A canonical signature exists of: <30> <total len> <02> <len R> <R> <02> <len S> <S> <hashtype>
     // Where R and S are not negative (their first byte has its highest bit not set), and not
     // excessively padded (do not start with a 0 byte, unless an otherwise negative number follows,
@@ -503,7 +503,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                 }
                 break;
 
-                case OP_2ROT:
+                case OP_2WIZ:
                 {
                     // (x1 x2 x3 x4 x5 x6 -- x3 x4 x5 x6 x1 x2)
                     if (stack.size() < 6)
@@ -601,7 +601,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                 }
                 break;
 
-                case OP_ROT:
+                case OP_WIZ:
                 {
                     // (x1 x2 x3 -- x2 x3 x1)
                     //  x2 x1 x3  after first swap
@@ -1133,7 +1133,7 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
         // Standard tx, sender provides pubkey, receiver adds signature
         mTemplates.insert(make_pair(TX_PUBKEY, CScript() << OP_PUBKEY << OP_CHECKSIG));
 
-        // Rotocoin address tx, sender provides hash of pubkey, receiver provides signature and pubkey
+        // Wizcoin address tx, sender provides hash of pubkey, receiver provides signature and pubkey
         mTemplates.insert(make_pair(TX_PUBKEYHASH, CScript() << OP_DUP << OP_HASH160 << OP_PUBKEYHASH << OP_EQUALVERIFY << OP_CHECKSIG));
 
         // Sender provides N pubkeys, receivers provides M signatures

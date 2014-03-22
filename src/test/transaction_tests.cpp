@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_CASE(tx_valid)
             }
 
             string transaction = test[1].get_str();
-            CDataStream stream(ParseHex(transaction), SER_NETWORK, PROTOCOL_VERSION);
+            CDataStream stream(ParseHex(transaction), SER_NETWORK, PWIZOCOL_VERSION);
             CTransaction tx;
             stream >> tx;
 
@@ -131,7 +131,7 @@ BOOST_AUTO_TEST_CASE(tx_invalid)
             }
 
             string transaction = test[1].get_str();
-            CDataStream stream(ParseHex(transaction), SER_NETWORK, PROTOCOL_VERSION);
+            CDataStream stream(ParseHex(transaction), SER_NETWORK, PWIZOCOL_VERSION);
             CTransaction tx;
             stream >> tx;
 
@@ -263,7 +263,7 @@ BOOST_AUTO_TEST_CASE(test_IsStandard)
     BOOST_CHECK(t.IsStandard());
 
     t.vout[0].nValue = 5011; // dust
-    // Rotocoin does not enforce isDust().  Per dust fees are considered sufficient as deterrant.
+    // Wizcoin does not enforce isDust().  Per dust fees are considered sufficient as deterrant.
     // BOOST_CHECK(!t.IsStandard());
 
     t.vout[0].nValue = 6011; // not dust

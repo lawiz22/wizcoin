@@ -1,4 +1,4 @@
-Rotocoin 0.8.x BETA
+Wizcoin 0.8.x BETA
 ====================
 
 Copyright (c) 2009-2013 Bitcoin developers
@@ -13,7 +13,7 @@ cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cry
 
 Intro
 ---------------------
-Rotocoin is a free open source peer-to-peer electronic cash system that is
+Wizcoin is a free open source peer-to-peer electronic cash system that is
 completely decentralized, without the need for a central server or trusted
 parties.  Users hold the crypto keys to their own money and transact directly
 with each other, with the help of a P2P network to check for double-spending.
@@ -21,17 +21,17 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 ---------------------
-You need the Qt4 run-time libraries to run Rotocoin-Qt. On Debian or Ubuntu:
+You need the Qt4 run-time libraries to run Wizcoin-Qt. On Debian or Ubuntu:
 	`sudo apt-get install libqtgui4`
 
 Unpack the files into a directory and run:
 
-- bin/32/rotocoin-qt (GUI, 32-bit)
-- bin/32/rotocoind (headless, 32-bit)
-- bin/64/rotocoin-qt (GUI, 64-bit)
-- bin/64/rotocoind (headless, 64-bit)
+- bin/32/Wizcoin-qt (GUI, 32-bit)
+- bin/32/Wizcoind (headless, 32-bit)
+- bin/64/Wizcoin-qt (GUI, 64-bit)
+- bin/64/Wizcoind (headless, 64-bit)
 
-See the documentation at the [Rotocoin Wiki](http://bitcoin.org)
+See the documentation at the [Wizcoin Wiki](http://bitcoin.org)
 for help and more information.
 
 

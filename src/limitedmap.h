@@ -1,8 +1,8 @@
 // Copyright (c) 2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ROTOCOIN_LIMITEDMAP_H
-#define ROTOCOIN_LIMITEDMAP_H
+#ifndef Wizcoin_LIMITEDMAP_H
+#define Wizcoin_LIMITEDMAP_H
 
 #include <map>
 #include <deque>

@@ -3,7 +3,7 @@
 <plist version="0.9">
 <dict>
 	<key>CFBundleIconFile</key>
-	<string>rotocoin.icns</string>
+	<string>Wizcoin.icns</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleGetInfoString</key>
@@ -15,19 +15,19 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleExecutable</key>
-	<string>Rotocoin-Qt</string>
+	<string>Wizcoin-Qt</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.rotocoin.Rotocoin-Qt</string>
+	<string>org.Wizcoin.Wizcoin-Qt</string>
         <key>CFBundleURLTypes</key>
         <array>
           <dict>
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
             <key>CFBundleURLName</key>
-            <string>org.rotocoin.RotocoinPayment</string>
+            <string>org.Wizcoin.WizcoinPayment</string>
             <key>CFBundleURLSchemes</key>
             <array>
-              <string>rotocoin</string>
+              <string>Wizcoin</string>
             </array>
           </dict>
         </array>

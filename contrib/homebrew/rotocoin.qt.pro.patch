@@ -1,7 +1,7 @@
-diff --git a/rotocoin-qt.pro b/rotocoin-qt.pro
+diff --git a/Wizcoin-qt.pro b/Wizcoin-qt.pro
 index d938c07..e1dd4ec 100644
---- a/rotocoin-qt.pro
-+++ b/rotocoin-qt.pro
+--- a/Wizcoin-qt.pro
++++ b/Wizcoin-qt.pro
 @@ -353,7 +353,7 @@
  }
  

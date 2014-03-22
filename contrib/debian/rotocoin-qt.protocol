@@ -1,6 +1,6 @@
 [Protocol]
-exec=rotocoin-qt '%u'
-protocol=rotocoin
+exec=Wizcoin-qt '%u'
+protocol=Wizcoin
 input=none
 output=none
 helper=true

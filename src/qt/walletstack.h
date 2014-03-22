@@ -1,5 +1,5 @@
 /*
- * Qt4 rotocoin GUI.
+ * Qt4 Wizcoin GUI.
  *
  * W.J. van der Laan 2011-2012
  * The Bitcoin developers 2011-2013
@@ -11,7 +11,7 @@
 #include <QMap>
 #include <boost/shared_ptr.hpp>
 
-class RotocoinGUI;
+class WizcoinGUI;
 class TransactionTableModel;
 class ClientModel;
 class WalletModel;
@@ -45,7 +45,7 @@ public:
     explicit WalletStack(QWidget *parent = 0);
     ~WalletStack();
 
-    void setRotocoinGUI(RotocoinGUI *gui) { this->gui = gui; }
+    void setWizcoinGUI(WizcoinGUI *gui) { this->gui = gui; }
 
     void setClientModel(ClientModel *clientModel) { this->clientModel = clientModel; }
 
@@ -59,7 +59,7 @@ public:
     void showOutOfSyncWarning(bool fShow);
 
 private:
-    RotocoinGUI *gui;
+    WizcoinGUI *gui;
     ClientModel *clientModel;
     QMap<QString, WalletView*> mapWalletViews;
 

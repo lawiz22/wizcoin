@@ -1,5 +1,5 @@
 /*
- * Qt4 rotocoin GUI.
+ * Qt4 Wizcoin GUI.
  *
  * W.J. van der Laan 2011-2012
  * The Bitcoin developers 2011-2013
@@ -9,7 +9,7 @@
 
 #include <QStackedWidget>
 
-class RotocoinGUI;
+class WizcoinGUI;
 class ClientModel;
 class WalletModel;
 class TransactionView;
@@ -35,16 +35,16 @@ class WalletView : public QStackedWidget
     Q_OBJECT
 
 public:
-    explicit WalletView(QWidget *parent, RotocoinGUI *_gui);
+    explicit WalletView(QWidget *parent, WizcoinGUI *_gui);
     ~WalletView();
 
-    void setRotocoinGUI(RotocoinGUI *gui);
+    void setWizcoinGUI(WizcoinGUI *gui);
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
     /** Set the wallet model.
-        The wallet model represents a rotocoin wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a Wizcoin wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
     void setWalletModel(WalletModel *walletModel);
@@ -54,7 +54,7 @@ public:
     void showOutOfSyncWarning(bool fShow);
 
 private:
-    RotocoinGUI *gui;
+    WizcoinGUI *gui;
     ClientModel *clientModel;
     WalletModel *walletModel;
 

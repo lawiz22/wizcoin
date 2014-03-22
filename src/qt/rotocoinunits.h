@@ -1,21 +1,21 @@
-#ifndef ROTOCOINUNITS_H
-#define ROTOCOINUNITS_H
+#ifndef WizcoinUNITS_H
+#define WizcoinUNITS_H
 
 #include <QString>
 #include <QAbstractListModel>
 
-/** Rotocoin unit definitions. Encapsulates parsing and formatting
+/** Wizcoin unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class RotocoinUnits: public QAbstractListModel
+class WizcoinUnits: public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit RotocoinUnits(QObject *parent);
+    explicit WizcoinUnits(QObject *parent);
 
-    /** Rotocoin units.
-      @note Source: https://en.rotocoin.it/wiki/Units . Please add only sensible ones
+    /** Wizcoin units.
+      @note Source: https://en.Wizcoin.it/wiki/Units . Please add only sensible ones
      */
     enum Unit
     {
@@ -62,8 +62,8 @@ public:
     ///@}
 
 private:
-    QList<RotocoinUnits::Unit> unitlist;
+    QList<WizcoinUnits::Unit> unitlist;
 };
-typedef RotocoinUnits::Unit RotocoinUnit;
+typedef WizcoinUnits::Unit WizcoinUnit;
 
-#endif // ROTOCOINUNITS_H
+#endif // WizcoinUNITS_H

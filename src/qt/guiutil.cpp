@@ -2,9 +2,9 @@
 
 #include "guiutil.h"
 
-#include "rotocoinaddressvalidator.h"
+#include "Wizcoinaddressvalidator.h"
 #include "walletmodel.h"
-#include "rotocoinunits.h"
+#include "Wizcoinunits.h"
 
 #include "util.h"
 #include "init.h"
@@ -58,7 +58,7 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
-QFont rotocoinAddressFont()
+QFont WizcoinAddressFont()
 {
     QFont font("Monospace");
     font.setStyleHint(QFont::TypeWriter);
@@ -67,9 +67,9 @@ QFont rotocoinAddressFont()
 
 void setupAddressWidget(QLineEdit *widget, QWidget *parent)
 {
-    widget->setMaxLength(RotocoinAddressValidator::MaxAddressLength);
-    widget->setValidator(new RotocoinAddressValidator(parent));
-    widget->setFont(rotocoinAddressFont());
+    widget->setMaxLength(WizcoinAddressValidator::MaxAddressLength);
+    widget->setValidator(new WizcoinAddressValidator(parent));
+    widget->setFont(WizcoinAddressFont());
 }
 
 void setupAmountWidget(QLineEdit *widget, QWidget *parent)
@@ -81,10 +81,10 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
     widget->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
 }
 
-bool parseRotocoinURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parseWizcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no rotocoin URI
-    if(!uri.isValid() || uri.scheme() != QString("rotocoin"))
+    // return if URI is not valid or is no Wizcoin URI
+    if(!uri.isValid() || uri.scheme() != QString("Wizcoin"))
         return false;
 
     SendCoinsRecipient rv;
@@ -115,7 +115,7 @@ bool parseRotocoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!RotocoinUnits::parse(RotocoinUnits::Rt2, i->second, &rv.amount))
+                if(!WizcoinUnits::parse(WizcoinUnits::Rt2, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -133,18 +133,18 @@ bool parseRotocoinURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseRotocoinURI(QString uri, SendCoinsRecipient *out)
+bool parseWizcoinURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert rotocoin:// to rotocoin:
+    // Convert Wizcoin:// to Wizcoin:
     //
-    //    Cannot handle this later, because rotocoin:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because Wizcoin:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("rotocoin://"))
+    if(uri.startsWith("Wizcoin://"))
     {
-        uri.replace(0, 11, "rotocoin:");
+        uri.replace(0, 11, "Wizcoin:");
     }
     QUrl uriInstance(uri);
-    return parseRotocoinURI(uriInstance, out);
+    return parseWizcoinURI(uriInstance, out);
 }
 
 QString HtmlEscape(const QString& str, bool fMultiLine)
@@ -301,12 +301,12 @@ bool ToolTipToRichTextFilter::eventFilter(QObject *obj, QEvent *evt)
 #ifdef WIN32
 boost::filesystem::path static StartupShortcutPath()
 {
-    return GetSpecialFolderPath(CSIDL_STARTUP) / "Rotocoin.lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / "Wizcoin.lnk";
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for Rotocoin.lnk
+    // check for Wizcoin.lnk
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -383,7 +383,7 @@ boost::filesystem::path static GetAutostartDir()
 
 boost::filesystem::path static GetAutostartFilePath()
 {
-    return GetAutostartDir() / "rotocoin.desktop";
+    return GetAutostartDir() / "Wizcoin.desktop";
 }
 
 bool GetStartOnSystemStartup()
@@ -421,10 +421,10 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         boost::filesystem::ofstream optionFile(GetAutostartFilePath(), std::ios_base::out|std::ios_base::trunc);
         if (!optionFile.good())
             return false;
-        // Write a rotocoin.desktop file to the autostart directory:
+        // Write a Wizcoin.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
-        optionFile << "Name=Rotocoin\n";
+        optionFile << "Name=Wizcoin\n";
         optionFile << "Exec=" << pszExePath << " -min\n";
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -442,7 +442,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl);
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl)
 {
-    // loop through the list of startup items and try to find the rotocoin app
+    // loop through the list of startup items and try to find the Wizcoin app
     CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, NULL);
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
@@ -463,21 +463,21 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 
 bool GetStartOnSystemStartup()
 {
-    CFURLRef rotocoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef WizcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, rotocoinAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, WizcoinAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
-    CFURLRef rotocoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef WizcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, rotocoinAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, WizcoinAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add rotocoin app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, rotocoinAppUrl, NULL, NULL);
+        // add Wizcoin app to startup item list
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, WizcoinAppUrl, NULL, NULL);
     }
     else if(!fAutoStart && foundItem) {
         // remove item
@@ -495,10 +495,10 @@ bool SetStartOnSystemStartup(bool fAutoStart) { return false; }
 HelpMessageBox::HelpMessageBox(QWidget *parent) :
     QMessageBox(parent)
 {
-    header = tr("Rotocoin-Qt") + " " + tr("version") + " " +
+    header = tr("Wizcoin-Qt") + " " + tr("version") + " " +
         QString::fromStdString(FormatFullVersion()) + "\n\n" +
         tr("Usage:") + "\n" +
-        "  rotocoin-qt [" + tr("command-line options") + "]                     " + "\n";
+        "  Wizcoin-qt [" + tr("command-line options") + "]                     " + "\n";
 
     coreOptions = QString::fromStdString(HelpMessage());
 
@@ -507,7 +507,7 @@ HelpMessageBox::HelpMessageBox(QWidget *parent) :
         "  -min                   " + tr("Start minimized") + "\n" +
         "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n";
 
-    setWindowTitle(tr("Rotocoin-Qt"));
+    setWindowTitle(tr("Wizcoin-Qt"));
     setTextFormat(Qt::PlainText);
     // setMinimumWidth is ignored for QMessageBox so put in non-breaking spaces to make it wider.
     setText(header + QString(QChar(0x2003)).repeated(50));

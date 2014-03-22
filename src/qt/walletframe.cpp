@@ -1,11 +1,11 @@
 /*
- * Qt4 rotocoin GUI.
+ * Qt4 Wizcoin GUI.
  *
  * W.J. van der Laan 2011-2012
  * The Bitcoin developers 2011-2013
  */
 #include "walletframe.h"
-#include "rotocoingui.h"
+#include "Wizcoingui.h"
 #include "walletstack.h"
 #include "walletview.h"
 
@@ -13,7 +13,7 @@
 #include <QMessageBox>
 #include <QLabel>
 
-WalletFrame::WalletFrame(RotocoinGUI *_gui) :
+WalletFrame::WalletFrame(WizcoinGUI *_gui) :
     QFrame(_gui),
     gui(_gui),
     clientModel(0)
@@ -22,7 +22,7 @@ WalletFrame::WalletFrame(RotocoinGUI *_gui) :
     QHBoxLayout *walletFrameLayout = new QHBoxLayout(this);
     setContentsMargins(0,0,0,0);
     walletStack = new WalletStack(this);
-    walletStack->setRotocoinGUI(gui);
+    walletStack->setWizcoinGUI(gui);
     walletFrameLayout->setContentsMargins(0,0,0,0);
     walletFrameLayout->addWidget(walletStack);
 

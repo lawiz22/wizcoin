@@ -6,13 +6,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Rotocoin</source>
-        <translation>About Rotocoin</translation>
+        <source>About Wizcoin</source>
+        <translation>About Wizcoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Rotocoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Rotocoin&lt;/b&gt; version</translation>
+        <source>&lt;b&gt;Wizcoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Wizcoin&lt;/b&gt; version</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -69,8 +69,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
-        <source>These are your Rotocoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>These are your Rotocoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</translation>
+        <source>These are your Wizcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>These are your Wizcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -84,8 +84,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Rotocoin address</source>
-        <translation>Sign a message to prove you own a Rotocoin address</translation>
+        <source>Sign a message to prove you own a Wizcoin address</source>
+        <translation>Sign a message to prove you own a Wizcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -109,8 +109,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-44"/>
-        <source>Verify a message to ensure it was signed with a specified Rotocoin address</source>
-        <translation>Verify a message to ensure it was signed with a specified Rotocoin address</translation>
+        <source>Verify a message to ensure it was signed with a specified Wizcoin address</source>
+        <translation>Verify a message to ensure it was signed with a specified Wizcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -124,8 +124,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="-5"/>
-        <source>These are your Rotocoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>These are your Rotocoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</translation>
+        <source>These are your Wizcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>These are your Wizcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -250,8 +250,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ROTOCOINS&lt;/b&gt;!</source>
-        <translation>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ROTOCOINS&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR WizcoinS&lt;/b&gt;!</source>
+        <translation>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR WizcoinS&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -277,8 +277,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-56"/>
-        <source>Rotocoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your rotocoins from being stolen by malware infecting your computer.</source>
-        <translation>Rotocoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your rotocoins from being stolen by malware infecting your computer.</translation>
+        <source>Wizcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your Wizcoins from being stolen by malware infecting your computer.</source>
+        <translation>Wizcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your Wizcoins from being stolen by malware infecting your computer.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -323,9 +323,9 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
 </context>
 <context>
-    <name>RotocoinGUI</name>
+    <name>WizcoinGUI</name>
     <message>
-        <location filename="../rotocoingui.cpp" line="+233"/>
+        <location filename="../Wizcoingui.cpp" line="+233"/>
         <source>Sign &amp;message...</source>
         <translation>Sign &amp;message...</translation>
     </message>
@@ -376,8 +376,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about Rotocoin</source>
-        <translation>Show information about Rotocoin</translation>
+        <source>Show information about Wizcoin</source>
+        <translation>Show information about Wizcoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -421,13 +421,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-347"/>
-        <source>Send coins to a Rotocoin address</source>
-        <translation>Send coins to a Rotocoin address</translation>
+        <source>Send coins to a Wizcoin address</source>
+        <translation>Send coins to a Wizcoin address</translation>
     </message>
     <message>
         <location line="+49"/>
-        <source>Modify configuration options for Rotocoin</source>
-        <translation>Modify configuration options for Rotocoin</translation>
+        <source>Modify configuration options for Wizcoin</source>
+        <translation>Modify configuration options for Wizcoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -457,8 +457,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-165"/>
         <location line="+530"/>
-        <source>Rotocoin</source>
-        <translation>Rotocoin</translation>
+        <source>Wizcoin</source>
+        <translation>Wizcoin</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -482,8 +482,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+22"/>
-        <source>&amp;About Rotocoin</source>
-        <translation>&amp;About Rotocoin</translation>
+        <source>&amp;About Wizcoin</source>
+        <translation>&amp;About Wizcoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -502,13 +502,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign messages with your Rotocoin addresses to prove you own them</source>
-        <translation>Sign messages with your Rotocoin addresses to prove you own them</translation>
+        <source>Sign messages with your Wizcoin addresses to prove you own them</source>
+        <translation>Sign messages with your Wizcoin addresses to prove you own them</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified Rotocoin addresses</source>
-        <translation>Verify messages to ensure they were signed with specified Rotocoin addresses</translation>
+        <source>Verify messages to ensure they were signed with specified Wizcoin addresses</source>
+        <translation>Verify messages to ensure they were signed with specified Wizcoin addresses</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -538,15 +538,15 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+47"/>
-        <source>Rotocoin client</source>
-        <translation>Rotocoin client</translation>
+        <source>Wizcoin client</source>
+        <translation>Wizcoin client</translation>
     </message>
     <message numerus="yes">
         <location line="+141"/>
-        <source>%n active connection(s) to Rotocoin network</source>
+        <source>%n active connection(s) to Wizcoin network</source>
         <translation>
-            <numerusform>%n active connection to Rotocoin network</numerusform>
-            <numerusform>%n active connections to Rotocoin network</numerusform>
+            <numerusform>%n active connection to Wizcoin network</numerusform>
+            <numerusform>%n active connections to Wizcoin network</numerusform>
         </translation>
     </message>
     <message>
@@ -670,8 +670,8 @@ Address: %4
     <message>
         <location line="-23"/>
         <location line="+23"/>
-        <source>URI can not be parsed! This can be caused by an invalid Rotocoin address or malformed URI parameters.</source>
-        <translation>URI can not be parsed! This can be caused by an invalid Rotocoin address or malformed URI parameters.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Wizcoin address or malformed URI parameters.</source>
+        <translation>URI can not be parsed! This can be caused by an invalid Wizcoin address or malformed URI parameters.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -684,9 +684,9 @@ Address: %4
         <translation>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../rotocoin.cpp" line="+111"/>
-        <source>A fatal error occurred. Rotocoin can no longer continue safely and will quit.</source>
-        <translation>A fatal error occurred. Rotocoin can no longer continue safely and will quit.</translation>
+        <location filename="../Wizcoin.cpp" line="+111"/>
+        <source>A fatal error occurred. Wizcoin can no longer continue safely and will quit.</source>
+        <translation>A fatal error occurred. Wizcoin can no longer continue safely and will quit.</translation>
     </message>
 </context>
 <context>
@@ -751,8 +751,8 @@ Address: %4
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid Rotocoin address.</source>
-        <translation>The entered address &quot;%1&quot; is not a valid Rotocoin address.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Wizcoin address.</source>
+        <translation>The entered address &quot;%1&quot; is not a valid Wizcoin address.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -770,8 +770,8 @@ Address: %4
     <message>
         <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
-        <source>Rotocoin-Qt</source>
-        <translation>Rotocoin-Qt</translation>
+        <source>Wizcoin-Qt</source>
+        <translation>Wizcoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -833,13 +833,13 @@ Address: %4
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start Rotocoin after logging in to the system.</source>
-        <translation>Automatically start Rotocoin after logging in to the system.</translation>
+        <source>Automatically start Wizcoin after logging in to the system.</source>
+        <translation>Automatically start Wizcoin after logging in to the system.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start Rotocoin on system login</source>
-        <translation>&amp;Start Rotocoin on system login</translation>
+        <source>&amp;Start Wizcoin on system login</source>
+        <translation>&amp;Start Wizcoin on system login</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -858,8 +858,8 @@ Address: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Rotocoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatically open the Rotocoin client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
+        <source>Automatically open the Wizcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatically open the Wizcoin client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -868,8 +868,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the Rotocoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Connect to the Rotocoin network through a SOCKS proxy (e.g. when connecting through Tor).</translation>
+        <source>Connect to the Wizcoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Connect to the Wizcoin network through a SOCKS proxy (e.g. when connecting through Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -943,8 +943,8 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Rotocoin.</source>
-        <translation>The user interface language can be set here. This setting will take effect after restarting Rotocoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Wizcoin.</source>
+        <translation>The user interface language can be set here. This setting will take effect after restarting Wizcoin.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -958,8 +958,8 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show Rotocoin addresses in the transaction list or not.</source>
-        <translation>Whether to show Rotocoin addresses in the transaction list or not.</translation>
+        <source>Whether to show Wizcoin addresses in the transaction list or not.</source>
+        <translation>Whether to show Wizcoin addresses in the transaction list or not.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1010,8 +1010,8 @@ Address: %4
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting Rotocoin.</source>
-        <translation>This setting will take effect after restarting Rotocoin.</translation>
+        <source>This setting will take effect after restarting Wizcoin.</source>
+        <translation>This setting will take effect after restarting Wizcoin.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1029,8 +1029,8 @@ Address: %4
     <message>
         <location line="+50"/>
         <location line="+166"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rotocoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the Rotocoin network after a connection is established, but this process has not completed yet.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Wizcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the Wizcoin network after a connection is established, but this process has not completed yet.</translation>
     </message>
     <message>
         <location line="-124"/>
@@ -1083,8 +1083,8 @@ Address: %4
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
-        <source>Cannot start rotocoin: click-to-pay handler</source>
-        <translation>Cannot start rotocoin: click-to-pay handler</translation>
+        <source>Cannot start Wizcoin: click-to-pay handler</source>
+        <translation>Cannot start Wizcoin: click-to-pay handler</translation>
     </message>
 </context>
 <context>
@@ -1233,8 +1233,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Rotocoin-Qt help message to get a list with possible Rotocoin command-line options.</source>
-        <translation>Show the Rotocoin-Qt help message to get a list with possible Rotocoin command-line options.</translation>
+        <source>Show the Wizcoin-Qt help message to get a list with possible Wizcoin command-line options.</source>
+        <translation>Show the Wizcoin-Qt help message to get a list with possible Wizcoin command-line options.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1253,13 +1253,13 @@ Address: %4
     </message>
     <message>
         <location line="-104"/>
-        <source>Rotocoin - Debug window</source>
-        <translation>Rotocoin - Debug window</translation>
+        <source>Wizcoin - Debug window</source>
+        <translation>Wizcoin - Debug window</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>Rotocoin Core</source>
-        <translation>Rotocoin Core</translation>
+        <source>Wizcoin Core</source>
+        <translation>Wizcoin Core</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1268,8 +1268,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the Rotocoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Open the Rotocoin debug log file from the current data directory. This can take a few seconds for large log files.</translation>
+        <source>Open the Wizcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Open the Wizcoin debug log file from the current data directory. This can take a few seconds for large log files.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1278,8 +1278,8 @@ Address: %4
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-30"/>
-        <source>Welcome to the Rotocoin RPC console.</source>
-        <translation>Welcome to the Rotocoin RPC console.</translation>
+        <source>Welcome to the Wizcoin RPC console.</source>
+        <translation>Welcome to the Wizcoin RPC console.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1462,8 +1462,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Rotocoin address (e.g. VsPMGuDYWdibQQ1Hbwpbq3pDHmGY12F2wd)</source>
-        <translation>Enter a Rotocoin address (e.g. VsPMGuDYWdibQQ1Hbwpbq3pDHmGY12F2wd)</translation>
+        <source>Enter a Wizcoin address (e.g. VsPMGuDYWdibQQ1Hbwpbq3pDHmGY12F2wd)</source>
+        <translation>Enter a Wizcoin address (e.g. VsPMGuDYWdibQQ1Hbwpbq3pDHmGY12F2wd)</translation>
     </message>
 </context>
 <context>
@@ -1527,8 +1527,8 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Rotocoin address</source>
-        <translation>Sign the message to prove you own this Rotocoin address</translation>
+        <source>Sign the message to prove you own this Wizcoin address</source>
+        <translation>Sign the message to prove you own this Wizcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1563,8 +1563,8 @@ Address: %4
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified Rotocoin address</source>
-        <translation>Verify the message to ensure it was signed with the specified Rotocoin address</translation>
+        <source>Verify the message to ensure it was signed with the specified Wizcoin address</source>
+        <translation>Verify the message to ensure it was signed with the specified Wizcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1579,8 +1579,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Rotocoin address (e.g. VsPMGuDYWdibQQ1Hbwpbq3pDHmGY12F2wd)</source>
-        <translation>Enter a Rotocoin address (e.g. VsPMGuDYWdibQQ1Hbwpbq3pDHmGY12F2wd)</translation>
+        <source>Enter a Wizcoin address (e.g. VsPMGuDYWdibQQ1Hbwpbq3pDHmGY12F2wd)</source>
+        <translation>Enter a Wizcoin address (e.g. VsPMGuDYWdibQQ1Hbwpbq3pDHmGY12F2wd)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1589,8 +1589,8 @@ Address: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter Rotocoin signature</source>
-        <translation>Enter Rotocoin signature</translation>
+        <source>Enter Wizcoin signature</source>
+        <translation>Enter Wizcoin signature</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2213,11 +2213,11 @@ Address: %4
     </message>
 </context>
 <context>
-    <name>rotocoin-core</name>
+    <name>Wizcoin-core</name>
     <message>
-        <location filename="../rotocoinstrings.cpp" line="+94"/>
-        <source>Rotocoin version</source>
-        <translation>Rotocoin version</translation>
+        <location filename="../Wizcoinstrings.cpp" line="+94"/>
+        <source>Wizcoin version</source>
+        <translation>Wizcoin version</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -2226,8 +2226,8 @@ Address: %4
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or rotocoind</source>
-        <translation>Send command to -server or rotocoind</translation>
+        <source>Send command to -server or Wizcoind</source>
+        <translation>Send command to -server or Wizcoind</translation>
     </message>
     <message>
         <location line="-23"/>
@@ -2246,13 +2246,13 @@ Address: %4
     </message>
     <message>
         <location line="+24"/>
-        <source>Specify configuration file (default: rotocoin.conf)</source>
-        <translation>Specify configuration file (default: rotocoin.conf)</translation>
+        <source>Specify configuration file (default: Wizcoin.conf)</source>
+        <translation>Specify configuration file (default: Wizcoin.conf)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: rotocoind.pid)</source>
-        <translation>Specify pid file (default: rotocoind.pid)</translation>
+        <source>Specify pid file (default: Wizcoind.pid)</source>
+        <translation>Specify pid file (default: Wizcoind.pid)</translation>
     </message>
     <message>
         <location line="-1"/>
@@ -2329,24 +2329,24 @@ Address: %4
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=rotocoinrpc
+rpcuser=Wizcoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Rotocoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Wizcoin Alert&quot; admin@foo.com
 </source>
         <translation>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=rotocoinrpc
+rpcuser=Wizcoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Rotocoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Wizcoin Alert&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -2361,8 +2361,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Rotocoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Cannot obtain a lock on data directory %s. Rotocoin is probably already running.</source>
-        <translation>Cannot obtain a lock on data directory %s. Rotocoin is probably already running.</translation>
+        <source>Cannot obtain a lock on data directory %s. Wizcoin is probably already running.</source>
+        <translation>Cannot obtain a lock on data directory %s. Wizcoin is probably already running.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2406,8 +2406,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Rotocoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Rotocoin will not work properly.</source>
-        <translation>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Rotocoin will not work properly.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Wizcoin will not work properly.</source>
+        <translation>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Wizcoin will not work properly.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2656,8 +2656,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Rotocoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+5"/>
-        <source>SSL options: (see the Rotocoin Wiki for SSL setup instructions)</source>
-        <translation>SSL options: (see the Rotocoin Wiki for SSL setup instructions)</translation>
+        <source>SSL options: (see the Wizcoin Wiki for SSL setup instructions)</source>
+        <translation>SSL options: (see the Wizcoin Wiki for SSL setup instructions)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2846,13 +2846,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Rotocoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Rotocoin</source>
-        <translation>Error loading wallet.dat: Wallet requires newer version of Rotocoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Wizcoin</source>
+        <translation>Error loading wallet.dat: Wallet requires newer version of Wizcoin</translation>
     </message>
     <message>
         <location line="+93"/>
-        <source>Wallet needed to be rewritten: restart Rotocoin to complete</source>
-        <translation>Wallet needed to be rewritten: restart Rotocoin to complete</translation>
+        <source>Wallet needed to be rewritten: restart Wizcoin to complete</source>
+        <translation>Wallet needed to be rewritten: restart Wizcoin to complete</translation>
     </message>
     <message>
         <location line="-95"/>
@@ -2911,8 +2911,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Rotocoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="-25"/>
-        <source>Unable to bind to %s on this computer. Rotocoin is probably already running.</source>
-        <translation>Unable to bind to %s on this computer. Rotocoin is probably already running.</translation>
+        <source>Unable to bind to %s on this computer. Wizcoin is probably already running.</source>
+        <translation>Unable to bind to %s on this computer. Wizcoin is probably already running.</translation>
     </message>
     <message>
         <location line="+64"/>

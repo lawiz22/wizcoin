@@ -15,7 +15,7 @@ QT_BEGIN_NAMESPACE
 class QUrl;
 QT_END_NAMESPACE
 
-/** Dialog for sending rotocoins */
+/** Dialog for sending Wizcoins */
 class SendCoinsDialog : public QDialog
 {
     Q_OBJECT

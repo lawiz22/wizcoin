@@ -20,7 +20,7 @@ enum BlockSource {
     BLOCK_SOURCE_NETWORK
 };
 
-/** Model for Rotocoin network client. */
+/** Model for Wizcoin network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT

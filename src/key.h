@@ -2,8 +2,8 @@
 // Copyright (c) 2009-2013 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ROTOCOIN_KEY_H
-#define ROTOCOIN_KEY_H
+#ifndef Wizcoin_KEY_H
+#define Wizcoin_KEY_H
 
 #include <vector>
 

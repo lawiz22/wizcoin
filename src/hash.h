@@ -2,8 +2,8 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef ROTOCOIN_HASH_H
-#define ROTOCOIN_HASH_H
+#ifndef Wizcoin_HASH_H
+#define Wizcoin_HASH_H
 
 #include "uint256.h"
 #include "serialize.h"
@@ -98,7 +98,7 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
 }
 
 template<typename T>
-uint256 SerializeHash(const T& obj, int nType=SER_GETHASH, int nVersion=PROTOCOL_VERSION)
+uint256 SerializeHash(const T& obj, int nType=SER_GETHASH, int nVersion=PWIZOCOL_VERSION)
 {
     CHashWriter ss(nType, nVersion);
     ss << obj;

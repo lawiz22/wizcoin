@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = rotocoin-qt
-macx:TARGET = "Rotocoin-Qt"
+TARGET = Wizcoin-qt
+macx:TARGET = "Wizcoin-Qt"
 VERSION = 0.8.6.2
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
@@ -96,8 +96,8 @@ contains(USE_IPV6, -) {
     DEFINES += USE_IPV6=$$USE_IPV6
 }
 
-contains(ROTOCOIN_NEED_QT_PLUGINS, 1) {
-    DEFINES += ROTOCOIN_NEED_QT_PLUGINS
+contains(Wizcoin_NEED_QT_PLUGINS, 1) {
+    DEFINES += Wizcoin_NEED_QT_PLUGINS
     QTPLUGIN += qcncodecs qjpcodecs qtwcodecs qkrcodecs qtaccessiblewidgets
 }
 
@@ -138,7 +138,7 @@ macx:QMAKE_CXXFLAGS_WARN_ON += -Wno-deprecated
 
 # Input
 DEPENDPATH += src src/json src/qt
-HEADERS += src/qt/rotocoingui.h \
+HEADERS += src/qt/Wizcoingui.h \
     src/qt/transactiontablemodel.h \
     src/qt/addresstablemodel.h \
     src/qt/optionsdialog.h \
@@ -149,7 +149,7 @@ HEADERS += src/qt/rotocoingui.h \
     src/qt/signverifymessagedialog.h \
     src/qt/aboutdialog.h \
     src/qt/editaddressdialog.h \
-    src/qt/rotocoinaddressvalidator.h \
+    src/qt/Wizcoinaddressvalidator.h \
     src/alert.h \
     src/addrman.h \
     src/base58.h \
@@ -189,7 +189,7 @@ HEADERS += src/qt/rotocoingui.h \
     src/qt/monitoreddatamapper.h \
     src/qt/transactiondesc.h \
     src/qt/transactiondescdialog.h \
-    src/qt/rotocoinamountfield.h \
+    src/qt/Wizcoinamountfield.h \
     src/wallet.h \
     src/keystore.h \
     src/qt/transactionfilterproxy.h \
@@ -198,13 +198,13 @@ HEADERS += src/qt/rotocoingui.h \
     src/qt/walletview.h \
     src/qt/walletstack.h \
     src/qt/walletframe.h \
-    src/rotocoinrpc.h \
+    src/Wizcoinrpc.h \
     src/qt/overviewpage.h \
     src/qt/csvmodelwriter.h \
     src/crypter.h \
     src/qt/sendcoinsentry.h \
     src/qt/qvalidatedlineedit.h \
-    src/qt/rotocoinunits.h \
+    src/qt/Wizcoinunits.h \
     src/qt/qvaluecombobox.h \
     src/qt/askpassphrasedialog.h \
     src/protocol.h \
@@ -224,8 +224,8 @@ HEADERS += src/qt/rotocoingui.h \
     src/qt/macnotificationhandler.h \
     src/qt/splashscreen.h
 
-SOURCES += src/qt/rotocoin.cpp \
-    src/qt/rotocoingui.cpp \
+SOURCES += src/qt/Wizcoin.cpp \
+    src/qt/Wizcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \
     src/qt/optionsdialog.cpp \
@@ -236,7 +236,7 @@ SOURCES += src/qt/rotocoin.cpp \
     src/qt/signverifymessagedialog.cpp \
     src/qt/aboutdialog.cpp \
     src/qt/editaddressdialog.cpp \
-    src/qt/rotocoinaddressvalidator.cpp \
+    src/qt/Wizcoinaddressvalidator.cpp \
     src/alert.cpp \
     src/version.cpp \
     src/sync.cpp \
@@ -260,8 +260,8 @@ SOURCES += src/qt/rotocoin.cpp \
     src/qt/monitoreddatamapper.cpp \
     src/qt/transactiondesc.cpp \
     src/qt/transactiondescdialog.cpp \
-    src/qt/rotocoinstrings.cpp \
-    src/qt/rotocoinamountfield.cpp \
+    src/qt/Wizcoinstrings.cpp \
+    src/qt/Wizcoinamountfield.cpp \
     src/wallet.cpp \
     src/keystore.cpp \
     src/qt/transactionfilterproxy.cpp \
@@ -270,7 +270,7 @@ SOURCES += src/qt/rotocoin.cpp \
     src/qt/walletview.cpp \
     src/qt/walletstack.cpp \
     src/qt/walletframe.cpp \
-    src/rotocoinrpc.cpp \
+    src/Wizcoinrpc.cpp \
     src/rpcdump.cpp \
     src/rpcnet.cpp \
     src/rpcmining.cpp \
@@ -282,7 +282,7 @@ SOURCES += src/qt/rotocoin.cpp \
     src/crypter.cpp \
     src/qt/sendcoinsentry.cpp \
     src/qt/qvalidatedlineedit.cpp \
-    src/qt/rotocoinunits.cpp \
+    src/qt/Wizcoinunits.cpp \
     src/qt/qvaluecombobox.cpp \
     src/qt/askpassphrasedialog.cpp \
     src/protocol.cpp \
@@ -295,7 +295,7 @@ SOURCES += src/qt/rotocoin.cpp \
     src/txdb.cpp \
     src/qt/splashscreen.cpp
 
-RESOURCES += src/qt/rotocoin.qrc
+RESOURCES += src/qt/Wizcoin.qrc
 
 FORMS += src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/coincontroldialog.ui \
@@ -316,14 +316,14 @@ SOURCES += src/qt/qrcodedialog.cpp
 FORMS += src/qt/forms/qrcodedialog.ui
 }
 
-contains(ROTOCOIN_QT_TEST, 1) {
+contains(Wizcoin_QT_TEST, 1) {
 SOURCES += src/qt/test/test_main.cpp \
     src/qt/test/uritests.cpp
 HEADERS += src/qt/test/uritests.h
 DEPENDPATH += src/qt/test
 QT += testlib
-TARGET = rotocoin-qt_test
-DEFINES += ROTOCOIN_QT_TEST
+TARGET = Wizcoin-qt_test
+DEFINES += Wizcoin_QT_TEST
   macx: CONFIG -= app_bundle
 }
 
@@ -340,8 +340,8 @@ SOURCES_SSE2 += src/scrypt-sse2.cpp
 CODECFORTR = UTF-8
 
 # for lrelease/lupdate
-# also add new translations to src/qt/rotocoin.qrc under translations/
-TRANSLATIONS = $$files(src/qt/locale/rotocoin_*.ts)
+# also add new translations to src/qt/Wizcoin.qrc under translations/
+TRANSLATIONS = $$files(src/qt/locale/Wizcoin_*.ts)
 
 isEmpty(QMAKE_LRELEASE) {
     win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\\lrelease.exe
@@ -361,7 +361,7 @@ OTHER_FILES += README.md \
     doc/*.rst \
     doc/*.txt \
     doc/*.md \
-    src/qt/res/rotocoin-qt.rc \
+    src/qt/res/Wizcoin-qt.rc \
     src/test/*.cpp \
     src/test/*.h \
     src/qt/test/*.cpp \
@@ -398,7 +398,7 @@ isEmpty(BOOST_INCLUDE_PATH) {
 }
 
 win32:DEFINES += WIN32
-win32:RC_FILE = src/qt/res/rotocoin-qt.rc
+win32:RC_FILE = src/qt/res/Wizcoin-qt.rc
 
 win32:!contains(MINGW_THREAD_BUGFIX, 0) {
     # At least qmake's win32-g++-cross profile is missing the -lmingwthrd
@@ -422,7 +422,7 @@ macx:HEADERS += src/qt/macdockiconhandler.h src/qt/macnotificationhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm src/qt/macnotificationhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit -framework CoreServices
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/rotocoin.icns
+macx:ICON = src/qt/res/icons/Wizcoin.icns
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread

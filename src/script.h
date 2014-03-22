@@ -2,8 +2,8 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef H_ROTOCOIN_SCRIPT
-#define H_ROTOCOIN_SCRIPT
+#ifndef H_Wizcoin_SCRIPT
+#define H_Wizcoin_SCRIPT
 
 #include <string>
 #include <vector>
@@ -57,7 +57,7 @@ public:
  *  * CNoDestination: no destination set
  *  * CKeyID: TX_PUBKEYHASH destination
  *  * CScriptID: TX_SCRIPTHASH destination
- *  A CTxDestination is the internal data type encoded in a CRotocoinAddress
+ *  A CTxDestination is the internal data type encoded in a CWizcoinAddress
  */
 typedef boost::variant<CNoDestination, CKeyID, CScriptID> CTxDestination;
 
@@ -111,7 +111,7 @@ enum opcodetype
     OP_2DUP = 0x6e,
     OP_3DUP = 0x6f,
     OP_2OVER = 0x70,
-    OP_2ROT = 0x71,
+    OP_2WIZ = 0x71,
     OP_2SWAP = 0x72,
     OP_IFDUP = 0x73,
     OP_DEPTH = 0x74,
@@ -121,7 +121,7 @@ enum opcodetype
     OP_OVER = 0x78,
     OP_PICK = 0x79,
     OP_ROLL = 0x7a,
-    OP_ROT = 0x7b,
+    OP_WIZ = 0x7b,
     OP_SWAP = 0x7c,
     OP_TUCK = 0x7d,
 
@@ -520,7 +520,7 @@ public:
         return nFound;
     }
 
-    // Pre-version-0.6, Rotocoin always counted CHECKMULTISIGs
+    // Pre-version-0.6, Wizcoin always counted CHECKMULTISIGs
     // as 20 sigops. With pay-to-script-hash, that changed:
     // CHECKMULTISIGs serialized in scriptSigs are
     // counted more accurately, assuming they are of the form

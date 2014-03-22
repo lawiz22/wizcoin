@@ -30,7 +30,7 @@ public:
     qint64 amount;
 };
 
-/** Interface to Rotocoin wallet from Qt view code. */
+/** Interface to Wizcoin wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT

@@ -4,7 +4,7 @@
 
 #include <QApplication>
 
-#include "rotocoingui.h"
+#include "Wizcoingui.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
 #include "optionsmodel.h"
@@ -29,8 +29,8 @@
 #include "macdockiconhandler.h"
 #endif
 
-#if defined(ROTOCOIN_NEED_QT_PLUGINS) && !defined(_ROTOCOIN_QT_PLUGINS_INCLUDED)
-#define _ROTOCOIN_QT_PLUGINS_INCLUDED
+#if defined(Wizcoin_NEED_QT_PLUGINS) && !defined(_Wizcoin_QT_PLUGINS_INCLUDED)
+#define _Wizcoin_QT_PLUGINS_INCLUDED
 #define __INSURE__
 #include <QtPlugin>
 Q_IMPORT_PLUGIN(qcncodecs)
@@ -44,7 +44,7 @@ Q_IMPORT_PLUGIN(qtaccessiblewidgets)
 Q_DECLARE_METATYPE(bool*)
 
 // Need a global reference for the notifications to find the GUI
-static RotocoinGUI *guiref;
+static WizcoinGUI *guiref;
 static SplashScreen *splashref;
 
 static bool ThreadSafeMessageBox(const std::string& message, const std::string& caption, unsigned int style)
@@ -102,7 +102,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("rotocoin-core", psz).toStdString();
+    return QCoreApplication::translate("Wizcoin-core", psz).toStdString();
 }
 
 /* Handle runaway exceptions. Shows a message box with the problem and quits the program.
@@ -110,11 +110,11 @@ static std::string Translate(const char* psz)
 static void handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
-    QMessageBox::critical(0, "Runaway exception", RotocoinGUI::tr("A fatal error occurred. Rotocoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
+    QMessageBox::critical(0, "Runaway exception", WizcoinGUI::tr("A fatal error occurred. Wizcoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
     exit(1);
 }
 
-#ifndef ROTOCOIN_QT_TEST
+#ifndef Wizcoin_QT_TEST
 int main(int argc, char *argv[])
 {
     // Command-line options take precedence:
@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());
 #endif
 
-    Q_INIT_RESOURCE(rotocoin);
+    Q_INIT_RESOURCE(Wizcoin);
     QApplication app(argc, argv);
 
     // Register meta types used for QMetaObject::invokeMethod
@@ -141,12 +141,12 @@ int main(int argc, char *argv[])
     // Install global event filter that makes sure that long tooltips can be word-wrapped
     app.installEventFilter(new GUIUtil::ToolTipToRichTextFilter(TOOLTIP_WRAP_THRESHOLD, &app));
 
-    // ... then rotocoin.conf:
+    // ... then Wizcoin.conf:
     if (!boost::filesystem::is_directory(GetDataDir(false)))
     {
         // This message can not be translated, as translation is not initialized yet
-        // (which not yet possible because lang=XX can be overridden in rotocoin.conf in the data directory)
-        QMessageBox::critical(0, "Rotocoin",
+        // (which not yet possible because lang=XX can be overridden in Wizcoin.conf in the data directory)
+        QMessageBox::critical(0, "Wizcoin",
                               QString("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
     }
@@ -154,12 +154,12 @@ int main(int argc, char *argv[])
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
-    QApplication::setOrganizationName("Rotocoin");
+    QApplication::setOrganizationName("Wizcoin");
     QApplication::setOrganizationDomain("bitcoin.org");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
-        QApplication::setApplicationName("Rotocoin-Qt-testnet");
+        QApplication::setApplicationName("Wizcoin-Qt-testnet");
     else
-        QApplication::setApplicationName("Rotocoin-Qt");
+        QApplication::setApplicationName("Wizcoin-Qt");
 
     // ... then GUI settings:
     OptionsModel optionsModel;
@@ -183,11 +183,11 @@ int main(int argc, char *argv[])
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         app.installTranslator(&qtTranslator);
 
-    // Load e.g. rotocoin_de.qm (shortcut "de" needs to be defined in rotocoin.qrc)
+    // Load e.g. Wizcoin_de.qm (shortcut "de" needs to be defined in Wizcoin.qrc)
     if (translatorBase.load(lang, ":/translations/"))
         app.installTranslator(&translatorBase);
 
-    // Load e.g. rotocoin_de_DE.qm (shortcut "de_DE" needs to be defined in rotocoin.qrc)
+    // Load e.g. Wizcoin_de_DE.qm (shortcut "de_DE" needs to be defined in Wizcoin.qrc)
     if (translator.load(lang_territory, ":/translations/"))
         app.installTranslator(&translator);
 
@@ -209,7 +209,7 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_MAC
     // on mac, also change the icon now because it would look strange to have a testnet splash (green) and a std app icon (orange)
     if(GetBoolArg("-testnet")) {
-        MacDockIconHandler::instance()->setIcon(QIcon(":icons/rotocoin_testnet"));
+        MacDockIconHandler::instance()->setIcon(QIcon(":icons/Wizcoin_testnet"));
     }
 #endif
 
@@ -235,7 +235,7 @@ int main(int argc, char *argv[])
 
         boost::thread_group threadGroup;
 
-        RotocoinGUI window;
+        WizcoinGUI window;
         guiref = &window;
 
         QTimer* pollShutdownTimer = new QTimer(guiref);
@@ -276,7 +276,7 @@ int main(int argc, char *argv[])
                 }
 
                 // Now that initialization/startup is done, process any command-line
-                // rotocoin: URIs
+                // Wizcoin: URIs
                 QObject::connect(paymentServer, SIGNAL(receivedURI(QString)), &window, SLOT(handleURI(QString)));
                 QTimer::singleShot(100, paymentServer, SLOT(uiReady()));
 
@@ -288,7 +288,7 @@ int main(int argc, char *argv[])
                 guiref = 0;
                 delete walletModel;
             }
-            // Shutdown the core and its threads, but don't exit Rotocoin-Qt here
+            // Shutdown the core and its threads, but don't exit Wizcoin-Qt here
             threadGroup.interrupt_all();
             threadGroup.join_all();
             Shutdown();
@@ -307,4 +307,4 @@ int main(int argc, char *argv[])
     }
     return 0;
 }
-#endif // ROTOCOIN_QT_TEST
+#endif // Wizcoin_QT_TEST
